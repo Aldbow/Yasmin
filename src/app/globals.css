@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #0B111E;
+  --bg-elevated: #0F172A;
+  --glass-base: rgba(255, 255, 255, 0.05);
+  --glass-hover: rgba(255, 255, 255, 0.09);
+  --glass-active: rgba(255, 255, 255, 0.12);
+  --border-specular: rgba(255, 255, 255, 0.14);
+  --border-highlight: rgba(255, 255, 255, 0.28);
+  --accent-emerald: #10B981;
+  --accent-teal: #0D9488;
+  --accent-indigo: #6366F1;
+  --accent-rose: #F43F5E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #0B111E;
+  color: #F8FAFC;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0B111E;
+  color: #F8FAFC;
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  selection-background-color: rgba(16, 185, 129, 0.3);
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.28);
+  color: #F8FAFC;
+}
+
+/* Custom Typography Utility Classes */
+.font-heading {
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+.font-editorial {
+  font-family: var(--font-instrument), Georgia, serif;
+}
+
+.font-mono-code {
+  font-family: var(--font-jetbrains), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* PRD Section 4.2: Material Glassmorphism (Frosted Blur) */
+.glass-surface {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition:
+    background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-surface-interactive:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow:
+    0 14px 40px 0 rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.34);
+}
+
+.glass-pill {
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 12px 36px -4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.24);
+}
+
+/* Ambient Aurora Breathing Animations (12s autonomous cycle per PRD Section 6.1) */
+@keyframes aurora-breathe-1 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(45px, -30px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-30px, 25px, 0) scale(0.95);
+  }
+}
+
+@keyframes aurora-breathe-2 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(-50px, 35px, 0) scale(1.1);
+  }
+  75% {
+    transform: translate3d(35px, -25px, 0) scale(0.93);
+  }
+}
+
+@keyframes aurora-breathe-3 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(30px, 40px, 0) scale(1.12);
+  }
+}
+
+.animate-aurora-1 {
+  animation: aurora-breathe-1 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-2 {
+  animation: aurora-breathe-2 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-3 {
+  animation: aurora-breathe-3 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Marquee Animation for Bento 4 */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle Wave Ripple for Bento 2 */
+@keyframes ripple-drift {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-6px) scaleY(1.04);
+  }
+}
+
+.animate-wave-ripple {
+  animation: ripple-drift 7s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B111E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.45);
+}
+
+/* Accessibility: Reduced Motion Support (PRD Section 7) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3,
+  .animate-marquee,
+  .animate-wave-ripple {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Print Styles for CV Modal */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-cv-area,
+  #printable-cv-area * {
+    visibility: visible;
+  }
+  #printable-cv-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white !important;
+    color: #0F172A !important;
+    box-shadow: none !important;
+    padding: 24px !important;
+  }
+}
