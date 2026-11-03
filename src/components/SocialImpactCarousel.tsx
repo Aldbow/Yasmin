@@ -11,6 +11,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import Abstract3DOrb from "./Abstract3DOrb";
 import {
   SectionHeaderReveal,
   StaggerGrid,
@@ -85,10 +86,25 @@ export default function SocialImpactCarousel() {
         description="Peran kepengurusan dan kegiatan sukarela dalam kampanye penghematan energi (Earth Hour Bandung), manajemen sumber daya manusia internal relawan (Pojok Sosial), tata kelola kesenian tradisional Sunda (GARNIDA), serta edukasi kesehatan mental (Lingkar Psikologi)."
       />
 
-      <StaggerGrid
-        staggerDelay={0.14}
-        className="grid grid-cols-1 gap-5 sm:gap-7 md:grid-cols-2 lg:gap-8"
-      >
+      <div className="relative">
+        <Abstract3DOrb
+          variant="sage-blush"
+          size="lg"
+          animation="orbit"
+          hasTorusRing={true}
+          className="absolute -top-12 -left-6 -z-10 opacity-75 sm:-top-16 sm:-left-8"
+        />
+        <Abstract3DOrb
+          variant="champagne"
+          size="md"
+          animation="float-2"
+          className="absolute -bottom-10 -right-6 -z-10 opacity-60 sm:-bottom-12 sm:-right-8"
+        />
+
+        <StaggerGrid
+          staggerDelay={0.14}
+          className="grid grid-cols-1 gap-5 sm:gap-7 md:grid-cols-2 lg:gap-8"
+        >
         {VOLUNTEER_DATA.map((item) => {
           const IconComponent = getIcon(item.id);
           const visual = IMPACT_VISUALS[item.id] || IMPACT_VISUALS["earth-hour"];
@@ -202,6 +218,7 @@ export default function SocialImpactCarousel() {
           );
         })}
       </StaggerGrid>
+      </div>
     </section>
   );
 }

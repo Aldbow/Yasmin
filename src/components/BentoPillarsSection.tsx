@@ -13,6 +13,7 @@ import {
   FileCheck2,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import Abstract3DOrb from "./Abstract3DOrb";
 import {
   SectionHeaderReveal,
   ScrollReveal,
@@ -43,8 +44,23 @@ export default function BentoPillarsSection() {
         description="Empat bidang kerja utama yang merangkum pengalaman lapangan Aulia Yasmin di instansi pemerintah pusat, pemerintah daerah, BUMN, lembaga sosial, serta perusahaan swasta."
       />
 
-      <ScrollReveal direction="up" duration={0.75}>
-        <GlassCard className="group shimmer-foil p-5 sm:p-9 lg:p-10">
+      <div className="relative">
+        <Abstract3DOrb
+          variant="champagne"
+          size="lg"
+          animation="orbit"
+          hasTorusRing={true}
+          className="absolute -top-12 -right-6 -z-10 opacity-80 sm:-top-16 sm:-right-8"
+        />
+        <Abstract3DOrb
+          variant="ruby"
+          size="sm"
+          animation="float-2"
+          className="absolute -bottom-8 -left-4 -z-10 opacity-65 sm:-bottom-10 sm:-left-6"
+        />
+
+        <ScrollReveal direction="up" duration={0.75}>
+          <GlassCard className="group shimmer-foil p-5 sm:p-9 lg:p-10">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
             <div className="flex flex-col justify-between lg:col-span-7">
               <div>
@@ -155,11 +171,20 @@ export default function BentoPillarsSection() {
           </div>
         </GlassCard>
       </ScrollReveal>
+      </div>
 
-      <StaggerGrid
-        staggerDelay={0.14}
-        className="mt-6 grid grid-cols-1 gap-5 sm:mt-8 sm:gap-7 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
-      >
+      <div className="relative">
+        <Abstract3DOrb
+          variant="dawn"
+          size="md"
+          animation="drift"
+          className="absolute top-1/3 -right-6 -z-10 opacity-60 sm:-right-8"
+        />
+
+        <StaggerGrid
+          staggerDelay={0.14}
+          className="mt-6 grid grid-cols-1 gap-5 sm:mt-8 sm:gap-7 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+        >
         <StaggerCard className="h-full">
           <GlassCard className="group shimmer-foil flex h-full flex-col justify-between p-5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:shadow-[#A61E4D]/8">
             <div>
@@ -319,6 +344,7 @@ export default function BentoPillarsSection() {
           </GlassCard>
         </StaggerCard>
       </StaggerGrid>
+      </div>
 
       <ScrollReveal direction="scale" delay={0.08} className="mt-6 sm:mt-8">
         <div className="pearl-card rounded-2xl p-4.5 sm:p-6">

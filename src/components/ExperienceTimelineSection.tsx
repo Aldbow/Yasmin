@@ -19,6 +19,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import Abstract3DOrb from "./Abstract3DOrb";
 import { SectionHeaderReveal, ScrollReveal } from "./ScrollReveal";
 import {
   EXPERIENCES,
@@ -95,7 +96,15 @@ export default function ExperienceTimelineSection() {
       />
 
       <div className="grid grid-cols-1 gap-6 sm:gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
-        <div className="lg:sticky lg:top-28 lg:col-span-4">
+        <div className="lg:sticky lg:top-28 lg:col-span-4 relative">
+          <Abstract3DOrb
+            variant="berry"
+            size="md"
+            animation="orbit"
+            hasTorusRing={true}
+            className="absolute -top-10 -left-6 -z-10 opacity-70 sm:-top-12 sm:-left-8"
+          />
+
           <ScrollReveal direction="left" duration={0.7}>
             <GlassCard className="p-4.5 sm:p-7">
               <div className="group relative mb-5 hidden aspect-[3/2] w-full overflow-hidden rounded-2xl bg-[#F7EEF2] ring-1 ring-[#E5C5D3] lg:block">
@@ -436,6 +445,13 @@ export default function ExperienceTimelineSection() {
                   })}
                 </AnimatePresence>
               </div>
+
+              <Abstract3DOrb
+                variant="champagne"
+                size="md"
+                animation="drift"
+                className="absolute -bottom-8 -right-6 -z-10 opacity-55 sm:-bottom-12 sm:-right-8"
+              />
             </>
           )}
         </div>

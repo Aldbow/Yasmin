@@ -14,6 +14,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import Abstract3DOrb from "./Abstract3DOrb";
 import { SectionHeaderReveal, ScrollReveal } from "./ScrollReveal";
 import { PROFILE_DATA } from "@/data/portfolioData";
 
@@ -103,8 +104,23 @@ export default function ContactFooterSection({
         }
       />
 
-      <ScrollReveal direction="up" duration={0.75}>
-        <GlassCard className="group shimmer-foil p-5 sm:p-10 lg:p-12">
+      <div className="relative">
+        <Abstract3DOrb
+          variant="dawn"
+          size="lg"
+          animation="orbit"
+          hasTorusRing={true}
+          className="absolute -top-12 -right-6 -z-10 opacity-75 sm:-top-16 sm:-right-8"
+        />
+        <Abstract3DOrb
+          variant="ruby"
+          size="sm"
+          animation="float-1"
+          className="absolute -bottom-6 -left-4 -z-10 opacity-60 sm:-bottom-8 sm:-left-6"
+        />
+
+        <ScrollReveal direction="up" duration={0.75}>
+          <GlassCard className="group shimmer-foil p-5 sm:p-10 lg:p-12">
           <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12">
             <ScrollReveal
               direction="left"
@@ -425,6 +441,7 @@ export default function ContactFooterSection({
           </div>
         </GlassCard>
       </ScrollReveal>
+      </div>
 
       <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-[#E5C5D3] pt-6 text-center text-xs text-[#52323F] sm:mt-10 sm:flex-row sm:gap-4 sm:pt-8 sm:text-left">
         <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start">

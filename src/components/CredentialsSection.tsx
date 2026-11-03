@@ -12,6 +12,7 @@ import {
   Cpu,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import Abstract3DOrb from "./Abstract3DOrb";
 import {
   SectionHeaderReveal,
   ScrollReveal,
@@ -75,13 +76,22 @@ export default function CredentialsSection() {
       />
 
       <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
-        <ScrollReveal
-          direction="left"
-          duration={0.75}
-          className="lg:col-span-6"
-        >
-          <div
-            ref={cardRef}
+        <div className="relative lg:col-span-6">
+          <Abstract3DOrb
+            variant="ruby"
+            size="lg"
+            animation="orbit"
+            hasTorusRing={true}
+            className="absolute -top-10 -right-6 -z-10 opacity-75 sm:-top-14 sm:-right-8"
+          />
+
+          <ScrollReveal
+            direction="left"
+            duration={0.75}
+            className="h-full"
+          >
+            <div
+              ref={cardRef}
             onMouseEnter={() => setIsHovered(true)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -205,11 +215,20 @@ export default function CredentialsSection() {
             </div>
           </div>
         </ScrollReveal>
+        </div>
 
-        <StaggerGrid
-          staggerDelay={0.16}
-          className="flex flex-col justify-between gap-5 lg:col-span-6"
-        >
+        <div className="relative flex flex-col justify-between gap-5 lg:col-span-6">
+          <Abstract3DOrb
+            variant="dawn"
+            size="md"
+            animation="drift"
+            className="absolute -bottom-8 -right-4 -z-10 opacity-60 sm:-bottom-10 sm:-right-8"
+          />
+
+          <StaggerGrid
+            staggerDelay={0.16}
+            className="flex flex-col justify-between gap-5 h-full"
+          >
           {EDUCATION_DATA.map((edu, index) => {
             const isPrimary = index === 0;
             return (
@@ -285,6 +304,7 @@ export default function CredentialsSection() {
             );
           })}
         </StaggerGrid>
+        </div>
       </div>
     </section>
   );
