@@ -15,35 +15,35 @@ export default function HomePage() {
   const [cvModalOpen, setCvModalOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#0B111E] text-[#F8FAFC]">
-      {/* 1. Ambient Mesh Gradient Background ("Warm Empathetic Aurora" + Acrylic Grain) */}
+    <div className="relative min-h-screen overflow-x-hidden bg-[#FDF8FA] text-[#231118]">
+      {/* 1. Soft Pearl Blush Ambient Light Wash (Provides chromatic depth behind focal glass surfaces) */}
       <AmbientBackground />
 
-      {/* 2. Sticky Frosted Pill Navbar */}
+      {/* 2. Sticky Frosted Pearl Glass Navbar (Focal Glass Element #1) */}
       <FloatingNavbar onOpenCV={() => setCvModalOpen(true)} />
 
       {/* 3. Main Content Flow */}
-      <main className="relative z-10">
-        {/* Hero Section (Verified Kemensos RI Badge, Morphing Headline, Bio Card & 3D Tilt Quick-Stats) */}
+      <main id="main-content" className="relative z-10">
+        {/* Hero Section (Executive Bio Focal Glass Card + Editorial Ledger) */}
         <HeroSection onOpenCV={() => setCvModalOpen(true)} />
 
-        {/* Bento Grid: The 4 Core Pillars */}
+        {/* Core Competencies: Flagship Showcase + 3-Column Editorial Index */}
         <BentoPillarsSection />
 
-        {/* Interactive Experience Timeline (10 Professional Roles + Filter Tabs + Glowing Scroll Progress) */}
+        {/* Interactive Experience Timeline (10 Professional Roles + Search & Filter Tabs) */}
         <ExperienceTimelineSection />
 
-        {/* Credentials, Education & 3D Holographic Digital License Card */}
+        {/* National License & Academic Foundation */}
         <CredentialsSection />
 
-        {/* Social Impact, Volunteering & Cultural Leadership Carousel */}
+        {/* Social Impact, Volunteering & Cultural Leadership Showcase */}
         <SocialImpactCarousel />
       </main>
 
-      {/* 4. Interactive Contact & Footer Section */}
+      {/* 4. Interactive Contact & Colophon Footer */}
       <ContactFooterSection onOpenCV={() => setCvModalOpen(true)} />
 
-      {/* 5. Interactive Executive CV Preview & Printable PDF Modal */}
+      {/* 5. Executive CV Preview & Printable PDF Modal */}
       <CVPreviewModal
         isOpen={cvModalOpen}
         onClose={() => setCvModalOpen(false)}

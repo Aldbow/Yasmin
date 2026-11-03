@@ -39,9 +39,9 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title:
-    "Aulia Yasmin, S.Tr.Sos. — Licensed Social Worker | CSR, Community Development & HR Professional",
+    "Aulia Yasmin, S.Tr.Sos. | Licensed Social Worker, CSR, Community Development & HR",
   description:
-    "Personal Branding & Interactive Portfolio of Aulia Yasmin, S.Tr.Sos., Licensed Certified Social Worker (Kemensos RI ID: PS.G.1107-00-LSP.7-24). Bridging Human-Centered Empathy with Strategic CSR, Community Development, Counseling, and People Management.",
+    "Portofolio Resmi Aulia Yasmin, S.Tr.Sos., Pekerja Sosial Tersertifikasi Nasional (LSP Kemensos RI ID: PS.G.1107-00-LSP.7-24). Sinergi empati konseling dan pemberdayaan masyarakat dengan strategi HR, CSR, serta administrasi korporat.",
   keywords: [
     "Aulia Yasmin",
     "S.Tr.Sos.",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Aulia Yasmin, S.Tr.Sos." }],
   openGraph: {
     title:
-      "Aulia Yasmin, S.Tr.Sos. — Licensed Social Worker | CSR, Community Development & HR Professional",
+      "Aulia Yasmin, S.Tr.Sos. | Licensed Social Worker, CSR, Community Development & HR",
     description:
-      "Bridging Human-Centered Empathy with Strategic CSR, Community Development, and People Management. Licensed Certified Social Worker — Kemensos RI (ID: PS.G.1107-00-LSP.7-24).",
+      "Bridging Human-Centered Empathy with Strategic CSR, Community Development, and People Management. Licensed Certified Social Worker (Kemensos RI ID: PS.G.1107-00-LSP.7-24).",
     type: "website",
     locale: "id_ID",
     siteName: "Aulia Yasmin Portfolio",
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Aulia Yasmin, S.Tr.Sos. — Licensed Social Worker | CSR, Community Development & HR",
+      "Aulia Yasmin, S.Tr.Sos. | Licensed Social Worker, CSR, Community Development & HR",
     description:
-      "Licensed Certified Social Worker (Kemensos RI). Counselor │ CSR │ Community Development │ Human-Centered HR & Management.",
+      "Licensed Certified Social Worker (Kemensos RI). Counselor, CSR, Community Development, Human-Centered HR & Management.",
   },
 };
 
@@ -84,11 +84,11 @@ export default function RootLayout({
     <html
       lang="id"
       suppressHydrationWarning
-      className={`${jakarta.variable} ${instrument.variable} ${inter.variable} ${jetbrains.variable} dark`}
+      className={`${jakarta.variable} ${instrument.variable} ${inter.variable} ${jetbrains.variable}`}
     >
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-[#0B111E] text-[#F8FAFC] antialiased"
+        className="min-h-screen bg-[#FDF8FA] text-[#231118] antialiased"
       >
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>

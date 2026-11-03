@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg-canvas: #0B111E;
-  --bg-elevated: #0F172A;
-  --glass-base: rgba(255, 255, 255, 0.05);
-  --glass-hover: rgba(255, 255, 255, 0.09);
-  --glass-active: rgba(255, 255, 255, 0.12);
-  --border-specular: rgba(255, 255, 255, 0.14);
-  --border-highlight: rgba(255, 255, 255, 0.28);
-  --accent-emerald: #10B981;
-  --accent-teal: #0D9488;
-  --accent-indigo: #6366F1;
-  --accent-rose: #F43F5E;
+  --bg-canvas: #FDF8FA;
+  --bg-surface: #F7EEF2;
+  --bg-card-solid: #FBF5F8;
+  --ink-primary: #231118;
+  --ink-secondary: #52323F;
+  --ink-muted: #6E4757;
+  --border-subtle: #DEC3D0;
+  --border-interactive: #8A5A6E;
+  --accent-primary: #A61E4D;
+  --accent-hover: #8C163E;
+  --accent-soft-bg: #FCE8EF;
+  --accent-soft-ink: #881337;
 }
 
 * {
@@ -19,23 +20,48 @@
 }
 
 html {
-  background-color: #0B111E;
-  color: #F8FAFC;
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  background-color: #0B111E;
-  color: #F8FAFC;
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
-  selection-background-color: rgba(16, 185, 129, 0.3);
 }
 
 ::selection {
-  background: rgba(16, 185, 129, 0.28);
-  color: #F8FAFC;
+  background: rgba(166, 30, 77, 0.18);
+  color: #231118;
+}
+
+/* R-39: Base Layer Interaction Affordances */
+a[href],
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+[role="tab"]:not([aria-disabled="true"]),
+[role="radio"]:not([aria-disabled="true"]),
+summary,
+select:not(:disabled),
+label[for] {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+/* R-32: High-Contrast Keyboard Focus Indicator (7.21:1 against #FDF8FA) */
+:focus-visible {
+  outline: 2px solid #A61E4D;
+  outline-offset: 2px;
 }
 
 /* Custom Typography Utility Classes */
@@ -52,121 +78,51 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* PRD Section 4.2: Material Glassmorphism (Frosted Blur) */
-.glass-surface {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow:
-    0 8px 32px 0 rgba(0, 0, 0, 0.36),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
-  transition:
-    background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.glass-surface-interactive:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.24);
-  box-shadow:
-    0 14px 40px 0 rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.34);
-}
-
+/* R-10 Focused Glassmorphism Surface 1: Sticky Floating Navigation Pill */
 .glass-pill {
-  background: rgba(15, 23, 42, 0.68);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(253, 248, 250, 0.80);
+  backdrop-filter: blur(20px) saturate(165%);
+  -webkit-backdrop-filter: blur(20px) saturate(165%);
+  border: 1px solid rgba(138, 90, 110, 0.38);
   box-shadow:
-    0 12px 36px -4px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.24);
+    0 10px 28px -6px rgba(82, 20, 45, 0.10),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.92);
 }
 
-/* Ambient Aurora Breathing Animations (12s autonomous cycle per PRD Section 6.1) */
-@keyframes aurora-breathe-1 {
-  0%, 100% {
-    transform: translate3d(0px, 0px, 0) scale(1);
-  }
-  33% {
-    transform: translate3d(45px, -30px, 0) scale(1.08);
-  }
-  66% {
-    transform: translate3d(-30px, 25px, 0) scale(0.95);
-  }
+/* R-10 Focused Glassmorphism Surface 2: Signature Mother-of-Pearl Focal Card */
+.glass-pearl-focal {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(252, 232, 239, 0.68) 55%,
+    rgba(249, 222, 233, 0.74) 100%
+  );
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgba(166, 30, 77, 0.32);
+  box-shadow:
+    0 16px 36px -10px rgba(82, 20, 45, 0.11),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  transition:
+    border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes aurora-breathe-2 {
-  0%, 100% {
-    transform: translate3d(0px, 0px, 0) scale(1);
-  }
-  40% {
-    transform: translate3d(-50px, 35px, 0) scale(1.1);
-  }
-  75% {
-    transform: translate3d(35px, -25px, 0) scale(0.93);
-  }
+/* Supporting Satin Surface (Opaque Pearl Card: respects R-10 blur dose cap) */
+.pearl-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9EFF4 100%);
+  border: 1px solid #DEC3D0;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  transition:
+    background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes aurora-breathe-3 {
-  0%, 100% {
-    transform: translate3d(0px, 0px, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(30px, 40px, 0) scale(1.12);
-  }
-}
-
-.animate-aurora-1 {
-  animation: aurora-breathe-1 12s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-aurora-2 {
-  animation: aurora-breathe-2 14s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-aurora-3 {
-  animation: aurora-breathe-3 16s ease-in-out infinite;
-  will-change: transform;
-}
-
-/* Marquee Animation for Bento 4 */
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 32s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Subtle Wave Ripple for Bento 2 */
-@keyframes ripple-drift {
-  0%, 100% {
-    transform: translateY(0px) scaleY(1);
-  }
-  50% {
-    transform: translateY(-6px) scaleY(1.04);
-  }
-}
-
-.animate-wave-ripple {
-  animation: ripple-drift 7s ease-in-out infinite;
+.pearl-card-interactive:hover {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F6E5EE 100%);
+  border-color: #8A5A6E;
 }
 
 /* Custom Scrollbar */
@@ -176,29 +132,27 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B111E;
+  background: #FDF8FA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.16);
+  background: #D4B2C2;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.45);
+  background: #A61E4D;
 }
 
-/* Accessibility: Reduced Motion Support (PRD Section 7) */
+/* Accessibility: Reduced Motion Support (R-39) */
 @media (prefers-reduced-motion: reduce) {
-  .animate-aurora-1,
-  .animate-aurora-2,
-  .animate-aurora-3,
-  .animate-marquee,
-  .animate-wave-ripple {
-    animation: none !important;
-  }
-  html {
-    scroll-behavior: auto;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -217,7 +171,7 @@ body {
     top: 0;
     width: 100%;
     background: white !important;
-    color: #0F172A !important;
+    color: #231118 !important;
     box-shadow: none !important;
     padding: 24px !important;
   }

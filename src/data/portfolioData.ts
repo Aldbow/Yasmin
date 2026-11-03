@@ -74,9 +74,9 @@ export const PROFILE_DATA = {
     "Stakeholder Mediation",
   ],
   bioEnglish:
-    "Licensed Social Worker (S.Tr.Sos.) blending human-centered empathy with strategic HR, CSR, and corporate administration—building supportive workplaces and sustainable community programs with real impact.",
+    "Licensed Social Worker (S.Tr.Sos.) blending human-centered empathy with strategic HR, CSR, and corporate administration, building supportive workplaces and sustainable community programs with real impact.",
   bioIndonesian:
-    "Pekerja Sosial Tersertifikasi (S.Tr.Sos.) yang memadukan empati konseling dan pemberdayaan masyarakat dengan ketajaman HR, CSR, serta administrasi—menciptakan lingkungan kerja yang suportif dan program sosial yang berdampak nyata.",
+    "Pekerja Sosial Tersertifikasi (S.Tr.Sos.) yang memadukan empati konseling dan pemberdayaan masyarakat dengan ketajaman HR, CSR, serta administrasi, menciptakan lingkungan kerja yang suportif dan program sosial yang berdampak nyata.",
   quickStats: [
     {
       id: "institutions",
@@ -87,7 +87,7 @@ export const PROFILE_DATA = {
     },
     {
       id: "degree",
-      value: "S.Tr.Sos. — POLTEKESOS Bandung",
+      value: "S.Tr.Sos. · POLTEKESOS Bandung",
       label: "Pendidikan Tinggi Vokasi Sosial",
       subtext: "Applied Bachelor of Social Work",
       accent: "indigo" as const,
@@ -472,7 +472,7 @@ export const EDUCATION_DATA: EducationItem[] = [
   {
     id: "poltekesos",
     institution: "Politeknik Kesejahteraan Sosial (POLTEKESOS) Bandung",
-    degree: "Applied Bachelor's Degree (Sarjana Terapan — S.Tr.Sos.)",
+    degree: "Applied Bachelor's Degree (Sarjana Terapan, S.Tr.Sos.)",
     field: "Social Work (Pekerjaan Sosial)",
     period: "2024 – 2025",
     location: "Bandung, Jawa Barat",

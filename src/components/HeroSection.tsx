@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Check,
   Copy,
@@ -11,7 +11,6 @@ import {
   GraduationCap,
   ArrowUpRight,
   FileText,
-  Sparkles,
   Globe,
   ShieldCheck,
 } from "lucide-react";
@@ -25,16 +24,6 @@ interface HeroSectionProps {
 export default function HeroSection({ onOpenCV }: HeroSectionProps) {
   const [copiedId, setCopiedId] = useState(false);
   const [bioLang, setBioLang] = useState<"en" | "id">("id");
-  const [keywordIndex, setKeywordIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setKeywordIndex(
-        (prev) => (prev + 1) % PROFILE_DATA.morphingKeywords.length
-      );
-    }, 3200);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleCopyCredential = () => {
     navigator.clipboard.writeText(PROFILE_DATA.credentialId);
@@ -45,132 +34,94 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
   return (
     <section
       id="about"
-      className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24"
+      className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-36 sm:pb-20"
     >
-      {/* 1. Top Glass Badge (Verified Pill — PRD Section 5.2) */}
+      {/* Identity Motif Overline (No pill badge above H1 per R-09) */}
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55 }}
-        className="mb-7 flex flex-wrap items-center justify-between gap-3"
+        transition={{ duration: 0.45 }}
+        className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-[#DEC3D0] pb-3.5"
       >
-        <button
-          type="button"
-          onClick={handleCopyCredential}
-          title="Klik untuk menyalin ID Kredensial Kemensos RI"
-          className="glass-surface group inline-flex cursor-pointer items-center gap-2.5 rounded-full px-4 py-2 text-left text-xs font-medium text-slate-200 transition-all hover:border-emerald-400/40 hover:bg-white/[0.09]"
-        >
-          {/* Pulsing Green Active License Dot */}
-          <span className="relative flex h-2.5 w-2.5 shrink-0">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+        <div className="flex items-center gap-3">
+          <span className="font-mono-code text-xs font-semibold tracking-wider text-[#881337]">
+            00 / PROFIL EKSEKUTIF
           </span>
-
-          <span className="text-slate-100">
-            ✨ Licensed Certified Social Worker — Kemensos RI
+          <span aria-hidden="true" className="h-3.5 w-px bg-[#DEC3D0]" />
+          <span className="text-xs font-medium text-[#52323F]">
+            Licensed Certified Social Worker (Kementerian Sosial RI)
           </span>
+        </div>
 
-          <span className="font-mono-code rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-300 ring-1 ring-emerald-400/30">
-            ID: {PROFILE_DATA.credentialId}
-          </span>
-
-          <span className="inline-flex items-center gap-1 text-[11px] text-slate-400 group-hover:text-emerald-300">
-            {copiedId ? (
-              <>
-                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-300">Tersalin</span>
-              </>
-            ) : (
-              <>
-                <Copy className="h-3 w-3" />
-                <span className="hidden sm:inline">Salin ID</span>
-              </>
-            )}
-          </span>
-        </button>
-
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs text-slate-300">
-          <MapPin className="h-3.5 w-3.5 text-rose-400" />
+        <div className="inline-flex items-center gap-1.5 text-xs font-medium text-[#52323F]">
+          <MapPin aria-hidden="true" className="h-3.5 w-3.5 text-[#A61E4D]" />
           <span>{PROFILE_DATA.location}</span>
-          <span className="text-slate-600">•</span>
-          <span className="text-emerald-300/90">Aktif s.d. Des 2029</span>
+          <span aria-hidden="true" className="text-[#8A5A6E]">
+            ·
+          </span>
+          <span className="font-semibold text-[#881337]">
+            Lisensi Aktif s.d. Des 2029
+          </span>
         </div>
       </motion.div>
 
-      {/* 2. Main 12-Column Balanced Hero Grid (7 Cols Left / 5 Cols Right, Equal Height) */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-stretch">
-        {/* Left Column: Primary Identity, Morphing Sub-headline & CTAs */}
+      {/* Main 12-Column Balanced Hero Grid (7 Cols Left / 5 Cols Right) */}
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch">
+        {/* Left Column: Primary Identity, Editorial Statement & CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.08 }}
+          transition={{ duration: 0.55, delay: 0.06 }}
           className="flex flex-col justify-between lg:col-span-7"
         >
           <div>
-            <h1 className="font-heading text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-[62px] lg:leading-[1.06]">
+            <h1 className="font-heading text-4xl font-extrabold tracking-tight text-[#231118] sm:text-5xl lg:text-[58px] lg:leading-[1.08]">
               Aulia Yasmin,{" "}
-              <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-indigo-300 bg-clip-text text-transparent">
+              <span className="font-editorial font-normal italic text-[#A61E4D]">
                 S.Tr.Sos.
               </span>
             </h1>
 
-            {/* Positioning Branding Strip */}
-            <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs font-medium text-slate-300 sm:text-sm">
-              {PROFILE_DATA.positioningPills.map((pill, idx) => (
-                <React.Fragment key={pill}>
-                  <span className="rounded-lg bg-white/[0.05] px-2.5 py-1 text-slate-200 ring-1 ring-white/10">
-                    {pill}
-                  </span>
-                  {idx < PROFILE_DATA.positioningPills.length - 1 && (
-                    <span className="text-emerald-400/60">│</span>
-                  )}
-                </React.Fragment>
+            {/* Positioning Domains */}
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#52323F] sm:text-sm">
+              {PROFILE_DATA.positioningPills.map((pill) => (
+                <span
+                  key={pill}
+                  className="rounded-lg border border-[#DEC3D0] bg-[#FBF5F8] px-3 py-1 text-[#231118]"
+                >
+                  {pill}
+                </span>
               ))}
             </div>
 
-            {/* Sub-headline with Editorial Italic & Morphing Text (PRD Section 5.2) */}
+            {/* Editorial Value Proposition */}
             <div className="mt-6 max-w-2xl">
-              <p className="font-heading text-xl leading-relaxed font-medium text-slate-200 sm:text-2xl sm:leading-snug">
-                Bridging{" "}
-                <span className="font-editorial text-2xl font-normal italic text-emerald-300 sm:text-3xl">
+              <p className="font-heading text-xl leading-relaxed font-medium text-[#231118] sm:text-2xl sm:leading-snug">
+                Memadukan{" "}
+                <span className="font-editorial text-2xl font-normal italic text-[#A61E4D] sm:text-3xl">
                   Human-Centered Empathy
                 </span>{" "}
-                with Strategic{" "}
-                <span className="font-semibold text-white underline decoration-emerald-400/60 decoration-2 underline-offset-4">
+                dengan ketajaman strategis{" "}
+                <span className="font-semibold text-[#231118] underline decoration-[#A61E4D]/50 decoration-2 underline-offset-4">
                   CSR
                 </span>
                 ,{" "}
-                <span className="font-semibold text-white underline decoration-indigo-400/60 decoration-2 underline-offset-4">
+                <span className="font-semibold text-[#231118] underline decoration-[#A61E4D]/50 decoration-2 underline-offset-4">
                   Community Development
                 </span>
-                , and{" "}
-                <span className="font-semibold text-white underline decoration-rose-400/60 decoration-2 underline-offset-4">
+                , dan{" "}
+                <span className="font-semibold text-[#231118] underline decoration-[#A61E4D]/50 decoration-2 underline-offset-4">
                   People Management
                 </span>
                 .
               </p>
 
-              {/* Dynamic Morphing Focus Indicator */}
-              <div className="mt-5 flex flex-wrap items-center gap-2.5 text-xs sm:text-sm">
-                <span className="font-mono-code inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-400">
-                  <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
-                  Focus Domain:
-                </span>
-                <div className="relative h-7 overflow-hidden rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3.5 py-1">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={PROFILE_DATA.morphingKeywords[keywordIndex]}
-                      initial={{ y: 16, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -16, opacity: 0 }}
-                      transition={{ duration: 0.32 }}
-                      className="block text-xs font-semibold text-emerald-300"
-                    >
-                      {PROFILE_DATA.morphingKeywords[keywordIndex]}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-              </div>
+              <p className="mt-4 text-sm leading-relaxed text-[#52323F] sm:text-base">
+                Lulusan Sarjana Terapan Pekerjaan Sosial (POLTEKESOS Bandung)
+                dengan rekam jejak lintas kementerian, BUMN strategis, lembaga
+                rehabilitasi nasional, korporasi pembiayaan, dan institusi
+                pendidikan.
+              </p>
             </div>
           </div>
 
@@ -180,73 +131,82 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
               href={PROFILE_DATA.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-500 px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 ring-1 ring-white/30 transition-all hover:scale-[1.02] hover:shadow-emerald-500/35"
+              className="group inline-flex min-h-[46px] items-center gap-2 rounded-full bg-[#A61E4D] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#A61E4D]/20 transition-all hover:bg-[#8C163E]"
             >
-              <span>Connect on LinkedIn</span>
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span>Terhubung di LinkedIn</span>
+              <ArrowUpRight
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </a>
 
             <button
               type="button"
               onClick={onOpenCV}
-              className="glass-surface glass-surface-interactive inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-slate-100"
+              className="pearl-card pearl-card-interactive inline-flex min-h-[46px] items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-[#231118]"
             >
-              <FileText className="h-4 w-4 text-emerald-300" />
-              <span>Preview & Download CV</span>
+              <FileText aria-hidden="true" className="h-4 w-4 text-[#A61E4D]" />
+              <span>Pratinjau & Unduh CV</span>
             </button>
 
             <a
               href="#experience"
-              className="inline-flex items-center gap-1.5 rounded-full px-4 py-3 text-xs font-medium text-slate-300 transition-colors hover:text-white"
+              className="inline-flex min-h-[46px] items-center gap-1.5 rounded-full px-4 py-3 text-xs font-semibold text-[#52323F] transition-colors hover:text-[#A61E4D]"
             >
-              <span>Lihat 10 Rekam Jejak</span>
-              <span aria-hidden="true">↓</span>
+              <span>Telusuri 10 Rekam Jejak</span>
             </a>
           </div>
         </motion.div>
 
-        {/* 3. Right Column: Executive Summary Glass Bio Card (Balanced Height) */}
+        {/* Right Column: Focal Mother-of-Pearl Glass Executive Bio Card (R-10 Focal Glass Element #2) */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.18 }}
+          transition={{ duration: 0.6, delay: 0.14 }}
           className="lg:col-span-5"
         >
           <GlassCard
-            spotlightColor="indigo"
+            variant="focal-glass"
+            spotlightColor="rose"
             className="flex h-full flex-col justify-between p-6 sm:p-7"
           >
             <div>
-              <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3.5">
+              <div className="mb-4 flex items-center justify-between border-b border-[#DEC3D0] pb-3.5">
                 <div>
-                  <span className="font-mono-code text-[11px] uppercase tracking-widest text-emerald-300">
-                    Executive Summary
+                  <span className="font-mono-code text-[11px] font-semibold uppercase tracking-widest text-[#881337]">
+                    Ringkasan Eksekutif
                   </span>
-                  <h2 className="font-heading text-base font-bold text-white">
-                    Human-Centered Professional Profile
+                  <h2 className="font-heading text-base font-bold text-[#231118]">
+                    Profil Profesional Berbasis Empati
                   </h2>
                 </div>
 
                 {/* Language Switcher for Bio (ID / EN) */}
-                <div className="inline-flex items-center rounded-full border border-white/15 bg-black/25 p-0.5 text-[11px]">
+                <div
+                  role="group"
+                  aria-label="Pilih bahasa ringkasan profil"
+                  className="inline-flex items-center rounded-lg border border-[#8A5A6E] bg-white/80 p-0.5 text-xs"
+                >
                   <button
                     type="button"
+                    aria-pressed={bioLang === "id"}
                     onClick={() => setBioLang("id")}
-                    className={`cursor-pointer rounded-full px-2.5 py-1 font-medium transition-colors ${
+                    className={`min-h-[32px] min-w-[36px] rounded-md px-2.5 py-1 font-semibold transition-colors ${
                       bioLang === "id"
-                        ? "bg-white/15 text-white"
-                        : "text-slate-400 hover:text-slate-200"
+                        ? "bg-[#A61E4D] text-white"
+                        : "text-[#52323F] hover:text-[#231118]"
                     }`}
                   >
                     ID
                   </button>
                   <button
                     type="button"
+                    aria-pressed={bioLang === "en"}
                     onClick={() => setBioLang("en")}
-                    className={`cursor-pointer rounded-full px-2.5 py-1 font-medium transition-colors ${
+                    className={`min-h-[32px] min-w-[36px] rounded-md px-2.5 py-1 font-semibold transition-colors ${
                       bioLang === "en"
-                        ? "bg-white/15 text-white"
-                        : "text-slate-400 hover:text-slate-200"
+                        ? "bg-[#A61E4D] text-white"
+                        : "text-[#52323F] hover:text-[#231118]"
                     }`}
                   >
                     EN
@@ -254,8 +214,8 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
                 </div>
               </div>
 
-              {/* Short, Meaningful & Easy-to-Understand Executive Summary */}
-              <blockquote className="text-base leading-relaxed font-medium text-slate-100 sm:text-[17px] sm:leading-relaxed">
+              {/* Executive Summary Quote */}
+              <blockquote className="text-base leading-relaxed font-medium text-[#231118] sm:text-[16.5px]">
                 &ldquo;
                 {bioLang === "id"
                   ? PROFILE_DATA.bioIndonesian
@@ -263,39 +223,62 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
                 &rdquo;
               </blockquote>
 
-              {/* Compact Verified Credential Strip inside Bio Card for Structural Balance */}
-              <div className="mt-5 flex items-center justify-between gap-3 rounded-2xl border border-emerald-400/20 bg-emerald-500/[0.07] px-3.5 py-2.5">
-                <div className="flex items-center gap-2.5">
-                  <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-400" />
-                  <div className="text-xs">
-                    <span className="font-semibold text-emerald-200">
-                      Lisensi Resmi LSP Kemensos RI
-                    </span>
-                    <span className="font-mono-code block text-[11px] text-slate-300">
-                      {PROFILE_DATA.credentialId} · Berlaku 2024–2029
-                    </span>
+              {/* Interactive Verified Credential Copy Bar inside Focal Glass Card */}
+              <div className="mt-5 rounded-xl border border-[#A61E4D]/30 bg-[#FCE8EF]/80 p-3.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5">
+                    <ShieldCheck
+                      aria-hidden="true"
+                      className="h-4 w-4 shrink-0 text-[#881337]"
+                    />
+                    <div className="text-xs">
+                      <span className="font-semibold text-[#881337]">
+                        Lisensi Resmi LSP Kemensos RI
+                      </span>
+                      <span className="font-mono-code block text-[11px] font-medium text-[#52323F]">
+                        ID: {PROFILE_DATA.credentialId}
+                      </span>
+                    </div>
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyCredential}
+                    className="inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border border-[#8A5A6E] bg-white px-3 py-1.5 text-xs font-semibold text-[#231118] transition-colors hover:border-[#A61E4D] hover:bg-[#FCE8EF]"
+                  >
+                    {copiedId ? (
+                      <>
+                        <Check
+                          aria-hidden="true"
+                          className="h-3.5 w-3.5 text-[#881337]"
+                        />
+                        <span className="text-[#881337]">ID Tersalin</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy
+                          aria-hidden="true"
+                          className="h-3.5 w-3.5 text-[#881337]"
+                        />
+                        <span>Salin ID</span>
+                      </>
+                    )}
+                  </button>
                 </div>
-                <a
-                  href="#credentials"
-                  className="font-mono-code shrink-0 text-[11px] font-semibold text-emerald-300 hover:underline"
-                >
-                  Detail →
-                </a>
               </div>
             </div>
 
             {/* Cross-Sector Track Record Badges */}
-            <div className="mt-5 border-t border-white/10 pt-4">
-              <div className="mb-2 flex items-center gap-1.5 text-[11px] font-medium text-slate-400">
-                <Globe className="h-3.5 w-3.5 text-indigo-300" />
-                <span>Rekam Jejak Lintas Institusi & Sektor:</span>
+            <div className="mt-5 border-t border-[#DEC3D0] pt-4">
+              <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-[#52323F]">
+                <Globe aria-hidden="true" className="h-3.5 w-3.5 text-[#881337]" />
+                <span>Institusi & Organisasi Tempat Berkarya:</span>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {PROFILE_DATA.trustedInstitutions.map((inst) => (
                   <span
                     key={inst}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-slate-200"
+                    className="rounded-lg border border-[#DEC3D0] bg-white/85 px-2.5 py-1 text-[11px] font-semibold text-[#231118]"
                   >
                     {inst}
                   </span>
@@ -306,54 +289,48 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
         </motion.div>
       </div>
 
-      {/* 4. Floating Quick-Stats (3 Mini Glass Cards with 3D Tilt — PRD Section 5.2) */}
+      {/* Architectural 3-Metric Summary Bar (Unified ledger instead of 3 floating cards) */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.28 }}
-        className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3"
+        transition={{ duration: 0.55, delay: 0.22 }}
+        className="pearl-card mt-8 rounded-2xl p-5 sm:p-6"
       >
-        {PROFILE_DATA.quickStats.map((stat, idx) => {
-          const icons = [Building2, GraduationCap, Award];
-          const IconComponent = icons[idx] || Award;
-          const badgeColors = {
-            emerald:
-              "from-emerald-500/20 to-teal-500/10 text-emerald-300 ring-emerald-400/30",
-            indigo:
-              "from-indigo-500/20 to-blue-500/10 text-indigo-300 ring-indigo-400/30",
-            rose: "from-rose-500/20 to-pink-500/10 text-rose-300 ring-rose-400/30",
-          };
+        <div className="grid grid-cols-1 divide-y divide-[#DEC3D0] md:grid-cols-3 md:divide-x md:divide-y-0">
+          {PROFILE_DATA.quickStats.map((stat, idx) => {
+            const icons = [Building2, GraduationCap, Award];
+            const IconComponent = icons[idx] || Award;
 
-          return (
-            <GlassCard
-              key={stat.id}
-              spotlightColor={stat.accent}
-              enableTilt={true}
-              maxTiltDeg={7}
-              className="p-5 sm:p-6"
-            >
-              <div className="flex items-start justify-between gap-3">
+            return (
+              <div
+                key={stat.id}
+                className={`flex items-start justify-between gap-4 ${
+                  idx === 0
+                    ? "pb-4 md:pr-6 md:pb-0"
+                    : idx === 1
+                    ? "py-4 md:px-6 md:py-0"
+                    : "pt-4 md:pt-0 md:pl-6"
+                }`}
+              >
                 <div>
-                  <span className="font-mono-code text-[11px] uppercase tracking-wider text-slate-400">
+                  <span className="font-mono-code text-[11px] font-semibold uppercase tracking-wider text-[#6E4757]">
                     {stat.label}
                   </span>
-                  <h3 className="font-heading mt-1 text-lg font-bold text-white sm:text-xl">
+                  <h3 className="font-heading mt-1 text-lg font-bold text-[#231118] sm:text-xl">
                     {stat.value}
                   </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-300/90">
+                  <p className="mt-1 text-xs leading-relaxed text-[#52323F]">
                     {stat.subtext}
                   </p>
                 </div>
 
-                <div
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ring-1 ${badgeColors[stat.accent]}`}
-                >
-                  <IconComponent className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] ring-1 ring-[#A61E4D]/25">
+                  <IconComponent aria-hidden="true" className="h-5 w-5" />
                 </div>
               </div>
-            </GlassCard>
-          );
-        })}
+            );
+          })}
+        </div>
       </motion.div>
     </section>
   );

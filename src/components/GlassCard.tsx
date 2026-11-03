@@ -6,6 +6,7 @@ export interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
   spotlightColor?: "emerald" | "indigo" | "rose" | "mixed";
+  variant?: "satin" | "focal-glass";
   enableTilt?: boolean;
   maxTiltDeg?: number;
   onClick?: () => void;
@@ -14,9 +15,10 @@ export interface GlassCardProps {
 export default function GlassCard({
   children,
   className = "",
-  spotlightColor = "emerald",
+  spotlightColor = "rose",
+  variant = "satin",
   enableTilt = false,
-  maxTiltDeg = 6,
+  maxTiltDeg = 5,
   onClick,
 }: GlassCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -25,10 +27,10 @@ export default function GlassCard({
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
 
   const spotlightMap = {
-    emerald: "rgba(16, 185, 129, 0.16)",
-    indigo: "rgba(99, 102, 241, 0.16)",
-    rose: "rgba(244, 63, 94, 0.14)",
-    mixed: "rgba(56, 189, 248, 0.15)",
+    emerald: "rgba(166, 30, 77, 0.08)",
+    indigo: "rgba(136, 19, 55, 0.08)",
+    rose: "rgba(166, 30, 77, 0.10)",
+    mixed: "rgba(158, 42, 86, 0.09)",
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -54,6 +56,11 @@ export default function GlassCard({
     }
   };
 
+  const surfaceClass =
+    variant === "focal-glass"
+      ? "glass-pearl-focal"
+      : "pearl-card pearl-card-interactive";
+
   return (
     <div
       ref={cardRef}
@@ -66,26 +73,28 @@ export default function GlassCard({
           ? `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`
           : undefined,
         transition: isHovered
-          ? "transform 0.12s ease-out, background-color 0.3s ease, border-color 0.3s ease"
-          : "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease",
+          ? "transform 0.12s ease-out, background-color 0.25s ease, border-color 0.25s ease"
+          : "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, border-color 0.25s ease",
       }}
-      className={`glass-surface glass-surface-interactive relative overflow-hidden rounded-3xl ${className}`}
+      className={`${surfaceClass} relative overflow-hidden rounded-2xl ${className}`}
     >
-      {/* Top Specular Edge Reflection */}
+      {/* Top Mother-of-Pearl Specular Edge */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent"
       />
 
-      {/* Interactive Cursor Spotlight Glow (PRD Section 4.2) */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -inset-px transition-opacity duration-300"
-        style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(480px circle at ${mousePos.x}px ${mousePos.y}px, ${spotlightMap[spotlightColor]}, transparent 65%)`,
-        }}
-      />
+      {/* Subtle Interactive Cursor Sheen (only on focal glass or interactive cards) */}
+      {variant === "focal-glass" && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-px transition-opacity duration-300"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: `radial-gradient(440px circle at ${mousePos.x}px ${mousePos.y}px, ${spotlightMap[spotlightColor]}, transparent 68%)`,
+          }}
+        />
+      )}
 
       <div className="relative z-10 h-full">{children}</div>
     </div>
