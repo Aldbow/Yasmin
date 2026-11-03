@@ -13,6 +13,12 @@ import {
   Compass,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import {
+  SectionHeaderReveal,
+  ScrollReveal,
+  StaggerGrid,
+  StaggerCard,
+} from "./ScrollReveal";
 import { BENTO_PILLARS } from "@/data/portfolioData";
 
 export default function BentoPillarsSection() {
@@ -23,35 +29,23 @@ export default function BentoPillarsSection() {
       id="core-pillars"
       className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20"
     >
-      {/* Identity Motif Section Header (No pill badge above H2 per R-09) */}
-      <div className="mb-10 border-b border-[#DEC3D0] pb-6">
-        <div className="flex items-center gap-3">
-          <span className="font-mono-code text-xs font-semibold tracking-wider text-[#881337]">
-            01 / EMPAT PILAR KOMPETENSI
-          </span>
-          <span aria-hidden="true" className="h-px flex-1 bg-[#DEC3D0]" />
-        </div>
-        <h2 className="font-heading mt-3 max-w-3xl text-3xl font-bold tracking-tight text-[#231118] sm:text-4xl">
-          Empati Pekerjaan Sosial dalam{" "}
-          <span className="font-editorial font-normal italic text-[#A61E4D]">
-            Human-Centered Perspective
-          </span>{" "}
-          & Strategi Organisasi
-        </h2>
-        <p className="mt-2.5 max-w-3xl text-sm leading-relaxed text-[#52323F] sm:text-base">
-          Sintesis kompetensi yang menghubungkan keahlian klinis dan komunitas
-          Pekerja Sosial Tersertifikasi dengan kebutuhan strategis HR, CSR,
-          administrasi pemerintahan, serta manajemen pemangku kepentingan.
-        </p>
-      </div>
+      {/* Systematic Section Header Reveal */}
+      <SectionHeaderReveal
+        indexCode="01 / EMPAT PILAR KOMPETENSI"
+        title={
+          <>
+            Empati Pekerjaan Sosial dalam{" "}
+            <span className="font-editorial font-normal italic text-[#A61E4D]">
+              Human-Centered Perspective
+            </span>{" "}
+            & Strategi Organisasi
+          </>
+        }
+        description="Sintesis kompetensi yang menghubungkan keahlian klinis dan komunitas Pekerja Sosial Tersertifikasi dengan kebutuhan strategis HR, CSR, administrasi pemerintahan, serta manajemen pemangku kepentingan."
+      />
 
-      {/* Flagship Feature Panel (Pillar 01: Full-Width Editorial Split per R-14) */}
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.5 }}
-      >
+      {/* Flagship Feature Panel (Pillar 01: Full-Width Editorial Split with 3D Scroll Reveal) */}
+      <ScrollReveal direction="up" duration={0.75}>
         <GlassCard className="p-6 sm:p-8 lg:p-9">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
@@ -75,7 +69,7 @@ export default function BentoPillarsSection() {
                 {pillar1.description}
               </p>
 
-              <div className="mt-6 border-t border-[#DEC3D0] pt-4">
+              <div className="mt-6 border-t border-[#E5C5D3] pt-4">
                 <span className="font-mono-code text-[11px] font-semibold uppercase tracking-wider text-[#6E4757]">
                   Implementasi Nyata di Institusi:
                 </span>
@@ -83,7 +77,7 @@ export default function BentoPillarsSection() {
                   {pillar1.institutions.map((inst) => (
                     <span
                       key={inst}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-[#DEC3D0] bg-[#FCE8EF]/70 px-3 py-1.5 text-xs font-semibold text-[#881337]"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-[#E5C5D3] bg-[#FCE8EF]/70 px-3 py-1.5 text-xs font-semibold text-[#881337]"
                     >
                       <CheckCircle2
                         aria-hidden="true"
@@ -96,48 +90,53 @@ export default function BentoPillarsSection() {
               </div>
             </div>
 
-            {/* Sub-pillars Column */}
-            <div className="space-y-4 lg:col-span-5">
-              <div className="rounded-xl border border-[#DEC3D0] bg-white/90 p-5">
-                <div className="flex items-center gap-2 text-[#881337]">
-                  <Scale aria-hidden="true" className="h-4 w-4" />
-                  <h4 className="text-xs font-bold uppercase tracking-wider">
-                    Employee Relations & Mediasi
-                  </h4>
+            {/* Staggered Sub-pillars Column */}
+            <StaggerGrid
+              staggerDelay={0.14}
+              className="space-y-4 lg:col-span-5"
+            >
+              <StaggerCard>
+                <div className="rounded-xl border border-white/95 bg-white/90 p-5 shadow-2xs transition-transform duration-300 hover:-translate-y-0.5">
+                  <div className="flex items-center gap-2 text-[#881337]">
+                    <Scale aria-hidden="true" className="h-4 w-4" />
+                    <h4 className="text-xs font-bold uppercase tracking-wider">
+                      Employee Relations & Mediasi
+                    </h4>
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-[#52323F] sm:text-sm">
+                    Fasilitasi komunikasi dua arah, resolusi konflik
+                    interpersonal, dan penciptaan iklim kerja yang aman secara
+                    psikologis.
+                  </p>
                 </div>
-                <p className="mt-2 text-xs leading-relaxed text-[#52323F] sm:text-sm">
-                  Fasilitasi komunikasi dua arah, resolusi konflik
-                  interpersonal, dan penciptaan iklim kerja yang aman secara
-                  psikologis.
-                </p>
-              </div>
+              </StaggerCard>
 
-              <div className="rounded-xl border border-[#DEC3D0] bg-white/90 p-5">
-                <div className="flex items-center gap-2 text-[#881337]">
-                  <FileCheck2 aria-hidden="true" className="h-4 w-4" />
-                  <h4 className="text-xs font-bold uppercase tracking-wider">
-                    Administrasi Suportif & Etis
-                  </h4>
+              <StaggerCard>
+                <div className="rounded-xl border border-white/95 bg-white/90 p-5 shadow-2xs transition-transform duration-300 hover:-translate-y-0.5">
+                  <div className="flex items-center gap-2 text-[#881337]">
+                    <FileCheck2 aria-hidden="true" className="h-4 w-4" />
+                    <h4 className="text-xs font-bold uppercase tracking-wider">
+                      Administrasi Suportif & Etis
+                    </h4>
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-[#52323F] sm:text-sm">
+                    Tata kelola dokumen kepegawaian, birokrasi kementerian, dan
+                    kepatuhan SOP korporat maupun BUMN secara presisi.
+                  </p>
                 </div>
-                <p className="mt-2 text-xs leading-relaxed text-[#52323F] sm:text-sm">
-                  Tata kelola dokumen kepegawaian, birokrasi kementerian, dan
-                  kepatuhan SOP korporat maupun BUMN secara presisi.
-                </p>
-              </div>
-            </div>
+              </StaggerCard>
+            </StaggerGrid>
           </div>
         </GlassCard>
-      </motion.div>
+      </ScrollReveal>
 
-      {/* Supporting 3-Column Competency Architecture (Pillars 02, 03, 04) */}
-      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Supporting 3-Column Competency Architecture (Staggered Cascade on Scroll) */}
+      <StaggerGrid
+        staggerDelay={0.14}
+        className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+      >
         {/* Pillar 02: CSR & Community Development */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.06 }}
-        >
+        <StaggerCard className="h-full">
           <GlassCard className="flex h-full flex-col justify-between p-6">
             <div>
               <div className="flex items-center justify-between gap-2">
@@ -176,7 +175,7 @@ export default function BentoPillarsSection() {
               </ul>
             </div>
 
-            <div className="mt-6 border-t border-[#DEC3D0] pt-4">
+            <div className="mt-6 border-t border-[#E5C5D3] pt-4">
               <span className="font-mono-code text-[11px] font-semibold uppercase tracking-wider text-[#6E4757]">
                 Rekam Jejak Lapangan:
               </span>
@@ -184,7 +183,7 @@ export default function BentoPillarsSection() {
                 {pillar2.institutions.map((inst) => (
                   <span
                     key={inst}
-                    className="rounded-lg border border-[#DEC3D0] bg-white px-2.5 py-1 text-xs font-semibold text-[#231118]"
+                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-xs font-semibold text-[#231118] shadow-2xs"
                   >
                     {inst}
                   </span>
@@ -192,15 +191,10 @@ export default function BentoPillarsSection() {
               </div>
             </div>
           </GlassCard>
-        </motion.div>
+        </StaggerCard>
 
         {/* Pillar 03: Counseling, Rehab & Social Research */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.12 }}
-        >
+        <StaggerCard className="h-full">
           <GlassCard className="flex h-full flex-col justify-between p-6">
             <div>
               <div className="flex items-center justify-between gap-2">
@@ -224,7 +218,7 @@ export default function BentoPillarsSection() {
               </p>
             </div>
 
-            <div className="mt-6 border-t border-[#DEC3D0] pt-4">
+            <div className="mt-6 border-t border-[#E5C5D3] pt-4">
               <span className="font-mono-code text-[11px] font-semibold uppercase tracking-wider text-[#6E4757]">
                 Institusi Rehabilitasi & Riset:
               </span>
@@ -232,7 +226,7 @@ export default function BentoPillarsSection() {
                 {pillar3.institutions.map((inst) => (
                   <span
                     key={inst}
-                    className="rounded-lg border border-[#DEC3D0] bg-white px-2.5 py-1 text-xs font-semibold text-[#231118]"
+                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-xs font-semibold text-[#231118] shadow-2xs"
                   >
                     {inst}
                   </span>
@@ -240,16 +234,10 @@ export default function BentoPillarsSection() {
               </div>
             </div>
           </GlassCard>
-        </motion.div>
+        </StaggerCard>
 
         {/* Pillar 04: Education, Public Relations & Client Management */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.18 }}
-          className="md:col-span-2 lg:col-span-1"
-        >
+        <StaggerCard className="h-full md:col-span-2 lg:col-span-1">
           <GlassCard className="flex h-full flex-col justify-between p-6">
             <div>
               <div className="flex items-center justify-between gap-2">
@@ -273,7 +261,7 @@ export default function BentoPillarsSection() {
               </p>
             </div>
 
-            <div className="mt-6 border-t border-[#DEC3D0] pt-4">
+            <div className="mt-6 border-t border-[#E5C5D3] pt-4">
               <span className="font-mono-code text-[11px] font-semibold uppercase tracking-wider text-[#6E4757]">
                 Organisasi Terkait:
               </span>
@@ -281,7 +269,7 @@ export default function BentoPillarsSection() {
                 {pillar4.institutions.map((inst) => (
                   <span
                     key={inst}
-                    className="rounded-lg border border-[#DEC3D0] bg-white px-2.5 py-1 text-xs font-semibold text-[#231118]"
+                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-xs font-semibold text-[#231118] shadow-2xs"
                   >
                     {inst}
                   </span>
@@ -289,27 +277,51 @@ export default function BentoPillarsSection() {
               </div>
             </div>
           </GlassCard>
-        </motion.div>
-      </div>
+        </StaggerCard>
+      </StaggerGrid>
 
-      {/* Static Scannable Competency Index (Replaces endless marquee loop per R-19) */}
-      <div className="mt-6 rounded-2xl border border-[#DEC3D0] bg-[#F7EEF2]/80 p-5">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <span className="font-mono-code shrink-0 text-xs font-semibold uppercase tracking-wider text-[#881337]">
-            Keahlian Lintas Fungsi:
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {pillar4.marqueeSkills.map((skill) => (
-              <span
-                key={skill}
-                className="font-mono-code rounded-lg border border-[#DEC3D0] bg-white px-3 py-1 text-xs font-medium text-[#231118]"
-              >
-                {skill}
-              </span>
-            ))}
+      {/* Staggered Competency Index Tags */}
+      <ScrollReveal direction="scale" delay={0.08} className="mt-6">
+        <div className="pearl-card rounded-2xl p-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span className="font-mono-code shrink-0 text-xs font-semibold uppercase tracking-wider text-[#881337]">
+              Keahlian Lintas Fungsi:
+            </span>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.04,
+                  },
+                },
+              }}
+              className="flex flex-wrap gap-2"
+            >
+              {pillar4.marqueeSkills.map((skill) => (
+                <motion.span
+                  key={skill}
+                  variants={{
+                    hidden: { opacity: 0, y: 12, scale: 0.9 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+                    },
+                  }}
+                  className="font-mono-code rounded-lg border border-white/95 bg-white/90 px-3 py-1 text-xs font-medium text-[#231118] shadow-2xs transition-colors hover:border-[#A61E4D]/40 hover:bg-[#FCE8EF]/60"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </motion.div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

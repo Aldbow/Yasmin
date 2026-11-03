@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
 import {
   ShieldCheck,
   Copy,
@@ -13,6 +12,12 @@ import {
   Cpu,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import {
+  SectionHeaderReveal,
+  ScrollReveal,
+  StaggerGrid,
+  StaggerCard,
+} from "./ScrollReveal";
 import { PROFILE_DATA, EDUCATION_DATA } from "@/data/portfolioData";
 
 export default function CredentialsSection() {
@@ -56,35 +61,25 @@ export default function CredentialsSection() {
       id="credentials"
       className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20"
     >
-      {/* Identity Motif Section Header */}
-      <div className="mb-10 border-b border-[#DEC3D0] pb-6">
-        <div className="flex items-center gap-3">
-          <span className="font-mono-code text-xs font-semibold tracking-wider text-[#881337]">
-            03 / LISENSI PROFESI & FONDASI AKADEMIK
-          </span>
-          <span aria-hidden="true" className="h-px flex-1 bg-[#DEC3D0]" />
-        </div>
-        <h2 className="font-heading mt-3 max-w-3xl text-3xl font-bold tracking-tight text-[#231118] sm:text-4xl">
-          Sertifikasi Profesi Nasional &{" "}
-          <span className="font-editorial font-normal italic text-[#A61E4D]">
-            Pendidikan Vokasi
-          </span>
-        </h2>
-        <p className="mt-2.5 max-w-3xl text-sm leading-relaxed text-[#52323F] sm:text-base">
-          Kredibilitas resmi sebagai Pekerja Sosial Tersertifikasi di bawah
-          Lembaga Sertifikasi Profesi (LSP) Kementerian Sosial Republik
-          Indonesia, dipadukan dengan pendidikan tinggi vokasi pekerjaan sosial
-          dan literasi sistem komputer.
-        </p>
-      </div>
+      {/* Systematic Section Header Reveal */}
+      <SectionHeaderReveal
+        indexCode="03 / LISENSI PROFESI & FONDASI AKADEMIK"
+        title={
+          <>
+            Sertifikasi Profesi Nasional &{" "}
+            <span className="font-editorial font-normal italic text-[#A61E4D]">
+              Pendidikan Vokasi
+            </span>
+          </>
+        }
+        description="Kredibilitas resmi sebagai Pekerja Sosial Tersertifikasi di bawah Lembaga Sertifikasi Profesi (LSP) Kementerian Sosial Republik Indonesia, dipadukan dengan pendidikan tinggi vokasi pekerjaan sosial dan literasi sistem komputer."
+      />
 
       <div className="grid grid-cols-1 gap-7 lg:grid-cols-12 lg:items-stretch">
-        {/* 1. Interactive Mother-of-Pearl National License Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55 }}
+        {/* 1. Interactive Mother-of-Pearl National License Card (Enters from Left) */}
+        <ScrollReveal
+          direction="left"
+          duration={0.75}
           className="lg:col-span-6"
         >
           <div
@@ -98,21 +93,21 @@ export default function CredentialsSection() {
                 ? "transform 0.1s ease-out"
                 : "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
             }}
-            className="pearl-card relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#8A5A6E] p-6 shadow-lg shadow-[#52142D]/8 sm:p-8"
+            className="pearl-card relative flex h-full flex-col justify-between overflow-hidden rounded-2xl p-6 shadow-xl shadow-[#52142D]/8 sm:p-8"
           >
             {/* Pearlescent Rose-Champagne Foil Reflection Layer */}
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 transition-opacity duration-300"
               style={{
-                opacity: isHovered ? 0.45 : 0.18,
-                background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(252, 232, 239, 0.9), rgba(244, 211, 225, 0.5) 42%, transparent 80%)`,
+                opacity: isHovered ? 0.52 : 0.22,
+                background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(252, 232, 239, 0.95), rgba(244, 211, 225, 0.55) 42%, transparent 80%)`,
               }}
             />
 
             <div className="relative z-10">
               {/* Top Official Seal Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DEC3D0] pb-5">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5C5D3] pb-5">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] ring-1 ring-[#A61E4D]/30">
                     <ShieldCheck aria-hidden="true" className="h-6 w-6" />
@@ -127,7 +122,7 @@ export default function CredentialsSection() {
                   </div>
                 </div>
 
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#8A5A6E] bg-[#FCE8EF] px-3 py-1 text-xs font-semibold text-[#881337]">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D4A5B8] bg-[#FCE8EF] px-3 py-1 text-xs font-semibold text-[#881337]">
                   <span
                     aria-hidden="true"
                     className="h-2 w-2 rounded-full bg-[#A61E4D]"
@@ -154,7 +149,7 @@ export default function CredentialsSection() {
 
               {/* Metadata Grid */}
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-[#DEC3D0] bg-white/90 p-3.5">
+                <div className="rounded-xl border border-white/95 bg-white/90 p-3.5 shadow-2xs">
                   <span className="font-mono-code text-[10px] font-semibold uppercase tracking-wider text-[#6E4757]">
                     Lembaga Penerbit
                   </span>
@@ -163,7 +158,7 @@ export default function CredentialsSection() {
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-[#DEC3D0] bg-white/90 p-3.5">
+                <div className="rounded-xl border border-white/95 bg-white/90 p-3.5 shadow-2xs">
                   <span className="font-mono-code text-[10px] font-semibold uppercase tracking-wider text-[#6E4757]">
                     Masa Berlaku Lisensi
                   </span>
@@ -207,25 +202,21 @@ export default function CredentialsSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </ScrollReveal>
 
-        {/* 2. Dual Education Cards */}
-        <div className="flex flex-col justify-between gap-5 lg:col-span-6">
+        {/* 2. Dual Education Cards (Staggered Cascade from Right) */}
+        <StaggerGrid
+          staggerDelay={0.16}
+          className="flex flex-col justify-between gap-5 lg:col-span-6"
+        >
           {EDUCATION_DATA.map((edu, index) => {
             const isPrimary = index === 0;
             return (
-              <motion.div
-                key={edu.id}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex-1"
-              >
+              <StaggerCard key={edu.id} className="flex-1">
                 <GlassCard className="flex h-full flex-col justify-between p-6 sm:p-7">
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <span className="font-mono-code rounded-lg border border-[#DEC3D0] bg-[#FCE8EF] px-3 py-1 text-xs font-semibold text-[#881337]">
+                      <span className="font-mono-code rounded-lg border border-[#E5C5D3] bg-[#FCE8EF] px-3 py-1 text-xs font-semibold text-[#881337]">
                         {edu.badge}
                       </span>
 
@@ -274,7 +265,7 @@ export default function CredentialsSection() {
                     </p>
                   </div>
 
-                  <ul className="mt-4 space-y-1.5 border-t border-[#DEC3D0] pt-3.5">
+                  <ul className="mt-4 space-y-1.5 border-t border-[#E5C5D3] pt-3.5">
                     {edu.highlights.map((item, i) => (
                       <li
                         key={i}
@@ -289,10 +280,10 @@ export default function CredentialsSection() {
                     ))}
                   </ul>
                 </GlassCard>
-              </motion.div>
+              </StaggerCard>
             );
           })}
-        </div>
+        </StaggerGrid>
       </div>
     </section>
   );

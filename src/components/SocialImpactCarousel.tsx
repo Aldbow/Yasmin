@@ -13,7 +13,10 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import GlassCard from "./GlassCard";
+import { SectionHeaderReveal, ScrollReveal } from "./ScrollReveal";
 import { VOLUNTEER_DATA } from "@/data/portfolioData";
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function SocialImpactCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -73,39 +76,26 @@ export default function SocialImpactCarousel() {
       id="impact"
       className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20"
     >
-      {/* Identity Motif Section Header */}
-      <div className="mb-8 border-b border-[#DEC3D0] pb-6">
-        <div className="flex items-center gap-3">
-          <span className="font-mono-code text-xs font-semibold tracking-wider text-[#881337]">
-            04 / DAMPAK KOMUNITAS & KEPEMIMPINAN SOSIAL
-          </span>
-          <span aria-hidden="true" className="h-px flex-1 bg-[#DEC3D0]" />
-        </div>
-
-        <div className="mt-3 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <div className="max-w-2xl">
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-[#231118] sm:text-4xl">
-              Kepemimpinan Komunitas,{" "}
-              <span className="font-editorial font-normal italic text-[#A61E4D]">
-                Advokasi Lingkungan
-              </span>{" "}
-              & Pelestarian Budaya
-            </h2>
-            <p className="mt-2.5 text-sm leading-relaxed text-[#52323F] sm:text-base">
-              Dedikasi aktif dalam kampanye perubahan iklim (Earth Hour
-              Bandung), manajemen SDM relawan (Pojok Sosial), advokasi kesehatan
-              mental (Lingkar Psikologi), serta pelestarian budaya Sunda
-              (GARNIDA).
-            </p>
-          </div>
-
-          {/* Carousel Prev/Next Controls (44x44px minimum tap target per R-03) */}
+      {/* Systematic Section Header Reveal with Carousel Controls */}
+      <SectionHeaderReveal
+        indexCode="04 / DAMPAK KOMUNITAS & KEPEMIMPINAN SOSIAL"
+        title={
+          <>
+            Kepemimpinan Komunitas,{" "}
+            <span className="font-editorial font-normal italic text-[#A61E4D]">
+              Advokasi Lingkungan
+            </span>{" "}
+            & Pelestarian Budaya
+          </>
+        }
+        description="Dedikasi aktif dalam kampanye perubahan iklim (Earth Hour Bandung), manajemen SDM relawan (Pojok Sosial), advokasi kesehatan mental (Lingkar Psikologi), serta pelestarian budaya Sunda (GARNIDA)."
+        rightSlot={
           <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={handlePrev}
               aria-label="Geser ke organisasi sebelumnya"
-              className="pearl-card pearl-card-interactive flex h-11 w-11 items-center justify-center rounded-full border border-[#8A5A6E] text-[#231118]"
+              className="pearl-card pearl-card-interactive flex h-11 w-11 items-center justify-center rounded-full text-[#231118]"
             >
               <ChevronLeft aria-hidden="true" className="h-5 w-5" />
             </button>
@@ -113,15 +103,15 @@ export default function SocialImpactCarousel() {
               type="button"
               onClick={handleNext}
               aria-label="Geser ke organisasi berikutnya"
-              className="pearl-card pearl-card-interactive flex h-11 w-11 items-center justify-center rounded-full border border-[#8A5A6E] text-[#231118]"
+              className="pearl-card pearl-card-interactive flex h-11 w-11 items-center justify-center rounded-full text-[#231118]"
             >
               <ChevronRight aria-hidden="true" className="h-5 w-5" />
             </button>
           </div>
-        </div>
-      </div>
+        }
+      />
 
-      {/* Horizontal Carousel (Aligned 2-up on Desktop, 1-up on Mobile) */}
+      {/* Horizontal Carousel with 3D Staggered Scroll Reveal */}
       <div
         ref={scrollRef}
         onScroll={handleScroll}
@@ -133,17 +123,38 @@ export default function SocialImpactCarousel() {
           return (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: idx * 0.06 }}
+              initial={{
+                opacity: 0,
+                y: 42,
+                scale: 0.94,
+                rotateX: 10,
+                filter: "blur(8px)",
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotateX: 0,
+                filter: "blur(0px)",
+              }}
+              viewport={{
+                once: false,
+                amount: 0.2,
+                margin: "-30px 0px -30px 0px",
+              }}
+              transition={{
+                duration: 0.68,
+                delay: idx * 0.1,
+                ease: EASE_OUT_EXPO,
+              }}
+              style={{ transformPerspective: 1000 }}
               className="w-[88vw] shrink-0 snap-start md:w-[calc(50%-10px)]"
             >
               <GlassCard className="flex h-full flex-col justify-between p-6 sm:p-7">
                 <div>
                   {/* Top Domain & Period Row */}
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="rounded-lg border border-[#DEC3D0] bg-[#FCE8EF] px-3 py-1 text-xs font-semibold text-[#881337]">
+                    <span className="rounded-lg border border-[#E5C5D3] bg-[#FCE8EF] px-3 py-1 text-xs font-semibold text-[#881337]">
                       {item.domain}
                     </span>
 
@@ -184,7 +195,7 @@ export default function SocialImpactCarousel() {
                 </div>
 
                 {/* Impact Highlights */}
-                <div className="mt-6 border-t border-[#DEC3D0] pt-4">
+                <div className="mt-6 border-t border-[#E5C5D3] pt-4">
                   <span className="font-mono-code text-[11px] font-semibold uppercase tracking-wider text-[#6E4757]">
                     Kontribusi & Dampak Komunitas:
                   </span>
@@ -210,26 +221,28 @@ export default function SocialImpactCarousel() {
       </div>
 
       {/* Carousel Indicators with 44x44px hit targets (R-03) */}
-      <div className="mt-3 flex items-center justify-center gap-1">
-        {VOLUNTEER_DATA.map((item, idx) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => scrollToIndex(idx)}
-            aria-label={`Tampilkan kartu ${item.organization}`}
-            aria-current={activeIndex === idx ? "true" : undefined}
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full p-2"
-          >
-            <span
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                activeIndex === idx
-                  ? "w-8 bg-[#A61E4D]"
-                  : "w-2.5 bg-[#D4B2C2] hover:bg-[#8A5A6E]"
-              }`}
-            />
-          </button>
-        ))}
-      </div>
+      <ScrollReveal direction="up" delay={0.1}>
+        <div className="mt-3 flex items-center justify-center gap-1">
+          {VOLUNTEER_DATA.map((item, idx) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => scrollToIndex(idx)}
+              aria-label={`Tampilkan kartu ${item.organization}`}
+              aria-current={activeIndex === idx ? "true" : undefined}
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full p-2"
+            >
+              <span
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === idx
+                    ? "w-8 bg-[#A61E4D]"
+                    : "w-2.5 bg-[#D4B2C2] hover:bg-[#8A5A6E]"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      </ScrollReveal>
     </section>
   );
 }
