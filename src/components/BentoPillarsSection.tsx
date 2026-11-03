@@ -44,12 +44,12 @@ export default function BentoPillarsSection() {
       />
 
       <ScrollReveal direction="up" duration={0.75}>
-        <GlassCard className="p-5 sm:p-9 lg:p-10">
+        <GlassCard className="group shimmer-foil p-5 sm:p-9 lg:p-10">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
             <div className="flex flex-col justify-between lg:col-span-7">
               <div>
                 <div className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#FCE8EF] text-[#881337] ring-1 ring-[#A61E4D]/25 sm:h-11 sm:w-11">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#FCE8EF] text-[#881337] ring-1 ring-[#A61E4D]/25 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 sm:h-11 sm:w-11">
                     <Users aria-hidden="true" className="h-5 w-5" />
                   </div>
                   <span className="font-mono-code text-[11px] font-semibold uppercase tracking-wider text-[#881337] sm:text-xs">
@@ -161,7 +161,7 @@ export default function BentoPillarsSection() {
         className="mt-6 grid grid-cols-1 gap-5 sm:mt-8 sm:gap-7 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
       >
         <StaggerCard className="h-full">
-          <GlassCard className="group flex h-full flex-col justify-between p-5 sm:p-7">
+          <GlassCard className="group shimmer-foil flex h-full flex-col justify-between p-5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:shadow-[#A61E4D]/8">
             <div>
               <div className="relative mb-4 aspect-[3/2] w-full overflow-hidden rounded-2xl bg-[#F7EEF2] ring-1 ring-[#E5C5D3] sm:mb-5">
                 <Image
@@ -177,13 +177,13 @@ export default function BentoPillarsSection() {
                   <span className="font-mono-code rounded-lg bg-[#231118]/90 px-2.5 py-1 text-[11px] font-semibold text-[#FCE8EF] shadow-sm backdrop-blur-md sm:px-3 sm:text-xs">
                     {pillar2.badge}
                   </span>
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] shadow-sm sm:h-9 sm:w-9">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 sm:h-9 sm:w-9">
                     <Sprout aria-hidden="true" className="h-4 w-4" />
                   </div>
                 </div>
               </div>
 
-              <h3 className="font-heading text-lg font-bold text-[#231118] sm:text-2xl">
+              <h3 className="font-heading text-lg font-bold text-[#231118] transition-colors duration-200 group-hover:text-[#881337] sm:text-2xl">
                 {pillar2.title}
               </h3>
               <p className="font-editorial mt-1 text-base italic text-[#881337]">
@@ -203,7 +203,7 @@ export default function BentoPillarsSection() {
                 {pillar2.institutions.map((inst) => (
                   <span
                     key={inst}
-                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#231118] shadow-2xs sm:px-3 sm:text-xs"
+                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#231118] shadow-2xs transition-colors hover:border-[#A61E4D]/30"
                   >
                     {inst}
                   </span>
@@ -214,7 +214,7 @@ export default function BentoPillarsSection() {
         </StaggerCard>
 
         <StaggerCard className="h-full">
-          <GlassCard className="group flex h-full flex-col justify-between p-5 sm:p-7">
+          <GlassCard className="group shimmer-foil flex h-full flex-col justify-between p-5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:shadow-[#A61E4D]/8">
             <div>
               <div className="relative mb-4 aspect-[3/2] w-full overflow-hidden rounded-2xl bg-[#F7EEF2] ring-1 ring-[#E5C5D3] sm:mb-5">
                 <Image
@@ -230,13 +230,13 @@ export default function BentoPillarsSection() {
                   <span className="font-mono-code rounded-lg bg-[#231118]/90 px-2.5 py-1 text-[11px] font-semibold text-[#FCE8EF] shadow-sm backdrop-blur-md sm:px-3 sm:text-xs">
                     {pillar3.badge}
                   </span>
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] shadow-sm sm:h-9 sm:w-9">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 sm:h-9 sm:w-9">
                     <HeartHandshake aria-hidden="true" className="h-4 w-4" />
                   </div>
                 </div>
               </div>
 
-              <h3 className="font-heading text-lg font-bold text-[#231118] sm:text-2xl">
+              <h3 className="font-heading text-lg font-bold text-[#231118] transition-colors duration-200 group-hover:text-[#881337] sm:text-2xl">
                 {pillar3.title}
               </h3>
               <p className="font-editorial mt-1 text-base italic text-[#881337]">
@@ -256,7 +256,7 @@ export default function BentoPillarsSection() {
                 {pillar3.institutions.map((inst) => (
                   <span
                     key={inst}
-                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#231118] shadow-2xs sm:px-3 sm:text-xs"
+                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#231118] shadow-2xs transition-colors hover:border-[#A61E4D]/30"
                   >
                     {inst}
                   </span>
@@ -267,7 +267,7 @@ export default function BentoPillarsSection() {
         </StaggerCard>
 
         <StaggerCard className="h-full md:col-span-2 lg:col-span-1">
-          <GlassCard className="group flex h-full flex-col justify-between p-5 sm:p-7">
+          <GlassCard className="group shimmer-foil flex h-full flex-col justify-between p-5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:shadow-[#A61E4D]/8">
             <div>
               <div className="relative mb-4 aspect-[3/2] w-full overflow-hidden rounded-2xl bg-[#F7EEF2] ring-1 ring-[#E5C5D3] sm:mb-5">
                 <Image
@@ -283,13 +283,13 @@ export default function BentoPillarsSection() {
                   <span className="font-mono-code rounded-lg bg-[#231118]/90 px-2.5 py-1 text-[11px] font-semibold text-[#FCE8EF] shadow-sm backdrop-blur-md sm:px-3 sm:text-xs">
                     {pillar4.badge}
                   </span>
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] shadow-sm sm:h-9 sm:w-9">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 sm:h-9 sm:w-9">
                     <Briefcase aria-hidden="true" className="h-4 w-4" />
                   </div>
                 </div>
               </div>
 
-              <h3 className="font-heading text-lg font-bold text-[#231118] sm:text-2xl">
+              <h3 className="font-heading text-lg font-bold text-[#231118] transition-colors duration-200 group-hover:text-[#881337] sm:text-2xl">
                 {pillar4.title}
               </h3>
               <p className="font-editorial mt-1 text-base italic text-[#881337]">
@@ -309,7 +309,7 @@ export default function BentoPillarsSection() {
                 {pillar4.institutions.map((inst) => (
                   <span
                     key={inst}
-                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#231118] shadow-2xs sm:px-3 sm:text-xs"
+                    className="rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#231118] shadow-2xs transition-colors hover:border-[#A61E4D]/30"
                   >
                     {inst}
                   </span>
@@ -329,12 +329,12 @@ export default function BentoPillarsSection() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.2 }}
               variants={{
                 hidden: {},
                 visible: {
                   transition: {
-                    staggerChildren: 0.04,
+                    staggerChildren: 0.03,
                   },
                 },
               }}
@@ -344,7 +344,7 @@ export default function BentoPillarsSection() {
                 <motion.span
                   key={skill}
                   variants={{
-                    hidden: { opacity: 0, y: 12, scale: 0.9 },
+                    hidden: { opacity: 0, y: 10, scale: 0.95 },
                     visible: {
                       opacity: 1,
                       y: 0,
@@ -352,7 +352,8 @@ export default function BentoPillarsSection() {
                       transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
                     },
                   }}
-                  className="font-mono-code rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-medium text-[#231118] shadow-2xs transition-colors hover:border-[#A61E4D]/40 hover:bg-[#FCE8EF]/60 sm:px-3.5 sm:py-1.5 sm:text-xs"
+                  whileHover={{ y: -2, scale: 1.05 }}
+                  className="font-mono-code cursor-default rounded-lg border border-white/95 bg-white/90 px-2.5 py-1 text-[11px] font-medium text-[#231118] shadow-2xs transition-all hover:border-[#A61E4D]/40 hover:bg-[#FCE8EF] hover:text-[#881337] sm:px-3.5 sm:py-1.5 sm:text-xs"
                 >
                   {skill}
                 </motion.span>

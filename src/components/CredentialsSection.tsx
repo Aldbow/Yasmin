@@ -91,7 +91,7 @@ export default function CredentialsSection() {
                 ? "transform 0.1s ease-out"
                 : "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
             }}
-            className="pearl-card relative flex h-full flex-col justify-between overflow-hidden rounded-2xl p-5 shadow-xl shadow-[#52142D]/8 sm:p-8"
+            className="pearl-card shimmer-foil relative flex h-full flex-col justify-between overflow-hidden rounded-2xl p-5 shadow-xl shadow-[#52142D]/8 sm:p-8"
           >
             <div
               aria-hidden="true"
@@ -122,10 +122,13 @@ export default function CredentialsSection() {
                 </div>
 
                 <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#D4A5B8] bg-[#FCE8EF] px-3 py-1 text-xs font-semibold text-[#881337]">
-                  <span
-                    aria-hidden="true"
-                    className="h-2 w-2 rounded-full bg-[#A61E4D]"
-                  />
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-sonar absolute -inset-0.5 rounded-full bg-[#A61E4D]" />
+                    <span
+                      aria-hidden="true"
+                      className="relative h-2 w-2 rounded-full bg-[#A61E4D]"
+                    />
+                  </span>
                   Berlaku Aktif
                 </span>
               </div>
@@ -211,7 +214,7 @@ export default function CredentialsSection() {
             const isPrimary = index === 0;
             return (
               <StaggerCard key={edu.id} className="flex-1">
-                <GlassCard className="flex h-full flex-col justify-between p-5 sm:p-7">
+                <GlassCard className="group shimmer-foil flex h-full flex-col justify-between p-5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:shadow-[#A61E4D]/6">
                   <div>
                     <div className="flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-2">
                       <span className="font-mono-code w-fit rounded-lg border border-[#E5C5D3] bg-[#FCE8EF] px-2.5 py-1 text-[11px] font-semibold text-[#881337] sm:px-3 sm:text-xs">
@@ -238,7 +241,7 @@ export default function CredentialsSection() {
 
                     <div className="mt-3.5 flex items-start justify-between gap-3 sm:mt-4">
                       <div>
-                        <h3 className="font-heading text-base font-bold text-[#231118] sm:text-xl">
+                        <h3 className="font-heading text-base font-bold text-[#231118] transition-colors duration-200 group-hover:text-[#881337] sm:text-xl">
                           {edu.institution}
                         </h3>
                         <p className="mt-1 text-xs font-semibold text-[#881337] sm:text-sm">
@@ -246,7 +249,7 @@ export default function CredentialsSection() {
                         </p>
                       </div>
 
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] ring-1 ring-[#A61E4D]/25">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FCE8EF] text-[#881337] ring-1 ring-[#A61E4D]/25 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
                         {isPrimary ? (
                           <GraduationCap
                             aria-hidden="true"

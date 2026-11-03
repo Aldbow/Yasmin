@@ -289,7 +289,7 @@ export default function ExperienceTimelineSection() {
                           aria-hidden="true"
                           initial={{ scale: 0.4, opacity: 0 }}
                           whileInView={{ scale: 1, opacity: 1 }}
-                          viewport={{ once: false, amount: 0.5 }}
+                          viewport={{ once: true, amount: 0.5 }}
                           transition={{
                             type: "spring",
                             stiffness: 260,
@@ -297,14 +297,19 @@ export default function ExperienceTimelineSection() {
                           }}
                           className="absolute top-5 left-0 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-[#A61E4D] bg-white shadow-sm sm:top-6 sm:left-3.5 sm:h-5 sm:w-5"
                         >
-                          <span
-                            className={`h-2 w-2 rounded-full sm:h-2.5 sm:w-2.5 ${
-                              exp.isCurrent ? "bg-[#A61E4D]" : "bg-[#C95B82]"
-                            }`}
-                          />
+                          <span className="relative flex h-2 w-2 items-center justify-center sm:h-2.5 sm:w-2.5">
+                            {exp.isCurrent && (
+                              <span className="animate-sonar absolute -inset-1 rounded-full bg-[#A61E4D]/45" />
+                            )}
+                            <span
+                              className={`relative h-2 w-2 rounded-full sm:h-2.5 sm:w-2.5 ${
+                                exp.isCurrent ? "bg-[#A61E4D]" : "bg-[#C95B82]"
+                              }`}
+                            />
+                          </span>
                         </motion.div>
 
-                        <GlassCard className="p-4.5 sm:p-7">
+                        <GlassCard className="group p-4.5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:shadow-[#A61E4D]/6">
                           <button
                             type="button"
                             onClick={() => toggleExpand(exp.id)}

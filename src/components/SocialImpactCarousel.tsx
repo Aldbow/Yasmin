@@ -93,9 +93,22 @@ export default function SocialImpactCarousel() {
           const IconComponent = getIcon(item.id);
           const visual = IMPACT_VISUALS[item.id] || IMPACT_VISUALS["earth-hour"];
 
+          const getIconAnimation = (id: string) => {
+            switch (id) {
+              case "lingkar-psikologi":
+                return "animate-heartbeat text-[#A61E4D]";
+              case "earth-hour":
+                return "transition-transform duration-500 group-hover:rotate-45";
+              case "garnida":
+                return "transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6";
+              default:
+                return "transition-transform duration-300 group-hover:scale-110";
+            }
+          };
+
           return (
             <StaggerCard key={item.id} className="h-full">
-              <GlassCard className="group flex h-full flex-col justify-between p-5 sm:p-7">
+              <GlassCard className="group shimmer-foil flex h-full flex-col justify-between p-5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:shadow-[#A61E4D]/6">
                 <div>
                   <div className="relative mb-4 aspect-[3/2] w-full overflow-hidden rounded-2xl bg-[#F7EEF2] ring-1 ring-[#E5C5D3] sm:mb-6">
                     <Image
@@ -138,7 +151,7 @@ export default function SocialImpactCarousel() {
                         </span>
                       </div>
 
-                      <h3 className="font-heading mt-1 text-lg font-bold text-[#231118] sm:text-2xl">
+                      <h3 className="font-heading mt-1 text-lg font-bold text-[#231118] transition-colors duration-200 group-hover:text-[#881337] sm:text-2xl">
                         {item.organization}
                       </h3>
                       <p className="mt-1 text-xs font-semibold text-[#881337] sm:text-sm">
@@ -153,7 +166,10 @@ export default function SocialImpactCarousel() {
                     </div>
 
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#FCE8EF] text-[#881337] ring-1 ring-[#A61E4D]/25 sm:h-11 sm:w-11">
-                      <IconComponent aria-hidden="true" className="h-5 w-5" />
+                      <IconComponent
+                        aria-hidden="true"
+                        className={`h-5 w-5 ${getIconAnimation(item.id)}`}
+                      />
                     </div>
                   </div>
 

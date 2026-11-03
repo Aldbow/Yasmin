@@ -104,7 +104,7 @@ export default function ContactFooterSection({
       />
 
       <ScrollReveal direction="up" duration={0.75}>
-        <GlassCard className="p-5 sm:p-10 lg:p-12">
+        <GlassCard className="group shimmer-foil p-5 sm:p-10 lg:p-12">
           <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12">
             <ScrollReveal
               direction="left"
@@ -200,9 +200,9 @@ export default function ContactFooterSection({
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: lang.level }}
-                          viewport={{ once: false, amount: 0.5 }}
+                          viewport={{ once: true, amount: 0.5 }}
                           transition={{
-                            duration: 0.9,
+                            duration: 0.85,
                             ease: [0.16, 1, 0.3, 1],
                           }}
                           className="h-full rounded-full bg-[#A61E4D]"
@@ -301,13 +301,19 @@ export default function ContactFooterSection({
                             role="radio"
                             aria-checked={active}
                             onClick={() => setTopic(item.label)}
-                            className={`min-h-[44px] rounded-lg border px-3 py-2 text-left text-xs font-semibold transition-all ${
+                            className={`flex min-h-[44px] items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-xs font-semibold transition-all ${
                               active
-                                ? "border-[#A61E4D] bg-[#FCE8EF] text-[#881337]"
+                                ? "border-[#A61E4D] bg-[#FCE8EF] text-[#881337] shadow-xs"
                                 : "border-[#E5C5D3] bg-[#FCF5F8] text-[#52323F] hover:border-[#8A5A6E] hover:text-[#231118]"
                             }`}
                           >
-                            {item.label}
+                            <span>{item.label}</span>
+                            {active && (
+                              <span
+                                aria-hidden="true"
+                                className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#A61E4D]"
+                              />
+                            )}
                           </button>
                         );
                       })}
