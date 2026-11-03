@@ -203,23 +203,59 @@ textarea:disabled,
   animation-play-state: paused !important;
 }
 
-/* Print Styles for CV Modal */
+/* Print Styles for ATS CV Document */
+#ats-cv-print-root {
+  display: none;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 7.5mm 10mm;
+}
+
 @media print {
-  body * {
-    visibility: hidden;
+  html,
+  body {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  #printable-cv-area,
-  #printable-cv-area * {
-    visibility: visible;
+
+  body > *:not(#ats-cv-print-root) {
+    display: none !important;
   }
-  #printable-cv-area {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background: white !important;
-    color: #231118 !important;
+
+  #ats-cv-print-root {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-family: Arial, Helvetica, "Segoe UI", -apple-system, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
     box-shadow: none !important;
-    padding: 24px !important;
+    border: none !important;
+  }
+
+  .ats-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .ats-section-header {
+    break-after: avoid;
+    page-break-after: avoid;
   }
 }

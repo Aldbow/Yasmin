@@ -18,7 +18,7 @@ export function SectionHeaderReveal({
   title,
   description,
   rightSlot,
-  className = "mb-10",
+  className = "mb-7 sm:mb-10",
 }: SectionHeaderRevealProps) {
   return (
     <motion.div
@@ -33,7 +33,7 @@ export function SectionHeaderReveal({
           },
         },
       }}
-      className={`border-b border-[#E5C5D3] pb-6 ${className}`}
+      className={`border-b border-[#E5C5D3] pb-4 sm:pb-6 ${className}`}
     >
       {/* 1. Index Number + Self-Drawing Hairline Rule */}
       <div className="flex items-center gap-3">
@@ -47,7 +47,7 @@ export function SectionHeaderReveal({
               transition: { duration: 0.55, ease: EASE_OUT_EXPO },
             },
           }}
-          className="font-mono-code text-xs font-semibold tracking-wider text-[#881337]"
+          className="font-mono-code text-[11px] font-semibold tracking-wider text-[#881337] sm:text-xs"
         >
           {indexCode}
         </motion.span>
@@ -69,9 +69,9 @@ export function SectionHeaderReveal({
 
       {/* 2. Title, Description & Optional Right Controls */}
       <div
-        className={`mt-3 ${
+        className={`mt-2.5 sm:mt-3 ${
           rightSlot
-            ? "flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
+            ? "flex flex-col justify-between gap-4 sm:gap-6 lg:flex-row lg:items-end"
             : ""
         }`}
       >
@@ -80,8 +80,8 @@ export function SectionHeaderReveal({
             variants={{
               hidden: {
                 opacity: 0,
-                y: 28,
-                rotateX: 14,
+                y: 24,
+                rotateX: 12,
                 filter: "blur(8px)",
               },
               visible: {
@@ -93,7 +93,7 @@ export function SectionHeaderReveal({
               },
             }}
             style={{ transformPerspective: 900 }}
-            className="font-heading text-3xl font-bold tracking-tight text-[#231118] sm:text-4xl"
+            className="font-heading text-2xl leading-snug font-bold tracking-tight text-[#231118] sm:text-4xl"
           >
             {title}
           </motion.h2>
@@ -101,7 +101,7 @@ export function SectionHeaderReveal({
           {description && (
             <motion.p
               variants={{
-                hidden: { opacity: 0, y: 18, filter: "blur(4px)" },
+                hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
                 visible: {
                   opacity: 1,
                   y: 0,
@@ -109,7 +109,7 @@ export function SectionHeaderReveal({
                   transition: { duration: 0.6, ease: EASE_OUT_EXPO },
                 },
               }}
-              className="mt-2.5 text-sm leading-relaxed text-[#52323F] sm:text-base"
+              className="mt-2 text-xs leading-relaxed text-[#52323F] sm:mt-2.5 sm:text-base"
             >
               {description}
             </motion.p>

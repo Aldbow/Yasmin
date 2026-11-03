@@ -23,8 +23,11 @@ All pairings are verified against WCAG 2.x AA/AAA via `contrast-check.py`:
    - Secondary Body: `#52323F` (10.59:1 on `#FDF8FA` — AAA)
    - Muted Metadata: `#6E4757` (6.83:1 on `#F7EEF2`, 6.38:1 on `#F3E5EC` — AA)
 4. **Deliberate Accent (Couture Berry Rose):**
-   - Primary Accent: `#A61E4D` with `#FFFFFF` text (7.21:1 — AAA), hover `#8C163E`.
-   - Soft Accent Chip Surface: `#FCE8EF` with `#881337` text (8.17:1 — AAA).
+   - Primary Accent: `#A61E4D` with `#FFFFFF` text (7.21:1 - AAA), hover `#8C163E`.
+   - Soft Accent Chip Surface: `#FCE8EF` with `#881337` text (8.17:1 - AAA).
+5. **Documentary Photography Scrims (R-10, R-11, R-12):**
+   - Dark Plum-Rose Scrim (`#231118` at 88%-92% opacity gradient): `#FFFFFF` text on `#231118` (18.03:1 - AAA), `#FCE8EF` text on `#231118` (15.39:1 - AAA), `#F7B2CA` text on `#231118` (10.45:1 - AAA).
+   - LCP Priority (`priority`) reserved exclusively for the Hero Executive Portrait banner; all below-the-fold pillar and carousel images use `loading="lazy"` inside fixed-height containers (`h-36` to `h-48`) for zero CLS.
 
 ## One-Line Reasons for Major Decisions (R-31 & Purpose-Gate)
 - **Color & Gradients (R-01):** Warm pearl-blush (`#FDF8FA`) and couture berry-rose (`#A61E4D`) express empathetic, human-centered professionalism while maintaining 7.21:1+ AAA contrast; multi-stop pearl-rose SVG gradients sculpt the abstract silk ribbons so the translucent glass card has rich chromatic contours to refract.
