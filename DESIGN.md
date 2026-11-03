@@ -40,3 +40,4 @@ All pairings are verified against WCAG 2.x AA/AAA via `contrast-check.py`:
 - **Feature Cards (R-14):** Core Pillars use a full-width flagship panel for Pillar 01 followed by a 3-column architectural row for Pillars 02–04 to reflect multidisciplinary weight rather than uniform copy-paste cards.
 - **Animations (R-19):** Transitions respond strictly to user intent (tab selection, accordion expansion, pointer tilt, and scroll reveal) and disable cleanly under `prefers-reduced-motion: reduce`.
 - **Identity Motif (Part 3):** Numbered serif-and-mono section indices (`01 / Kompetensi Utama` through `05 / Kolaborasi & Kontak`) paired with a rosewood hairline rule anchor every major section.
+
