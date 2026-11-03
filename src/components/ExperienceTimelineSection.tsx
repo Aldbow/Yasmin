@@ -265,40 +265,24 @@ export default function ExperienceTimelineSection() {
                     return (
                       <motion.div
                         key={exp.id}
-                        layout
                         initial={{
                           opacity: 0,
-                          x: 20,
-                          y: 28,
-                          scale: 0.96,
-                          rotateX: 8,
-                          filter: "blur(8px)",
+                          y: 20,
                         }}
                         whileInView={{
                           opacity: 1,
-                          x: 0,
                           y: 0,
-                          scale: 1,
-                          rotateX: 0,
-                          filter: "blur(0px)",
                         }}
-                        exit={{ opacity: 0, y: -16, scale: 0.95 }}
+                        exit={{ opacity: 0, y: -12 }}
                         viewport={{
-                          once: false,
-                          amount: 0.2,
-                          margin: "-25px 0px -25px 0px",
+                          once: true,
+                          amount: 0.1,
                         }}
                         transition={{
-                          duration: 0.65,
-                          delay: (index % 3) * 0.05,
+                          duration: 0.45,
+                          delay: (index % 3) * 0.04,
                           ease: EASE_OUT_EXPO,
-                          layout: {
-                            type: "spring",
-                            stiffness: 320,
-                            damping: 30,
-                          },
                         }}
-                        style={{ transformPerspective: 1000 }}
                         className="relative pl-7 sm:pl-16"
                       >
                         <motion.div

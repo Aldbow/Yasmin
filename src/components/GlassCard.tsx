@@ -34,11 +34,14 @@ export default function GlassCard({
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || (!enableTilt && variant !== "focal-glass")) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    setMousePos({ x, y });
+
+    if (variant === "focal-glass") {
+      setMousePos({ x, y });
+    }
 
     if (enableTilt) {
       const centerX = rect.width / 2;

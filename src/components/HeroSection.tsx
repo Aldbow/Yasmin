@@ -150,10 +150,10 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
       className="relative z-10 mx-auto max-w-[1440px] px-4 pt-24 pb-12 sm:px-8 sm:pt-36 sm:pb-24 lg:px-14"
     >
       <motion.div
-        initial={{ opacity: 0, y: -14, filter: "blur(6px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
+        initial={{ opacity: 0, y: -12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
         className="mb-6 flex flex-col gap-2 border-b border-[#E8CED9] pb-3.5 sm:mb-9 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4 sm:pb-4"
       >
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -184,12 +184,12 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
           variants={{
             hidden: {},
             visible: {
               transition: {
-                staggerChildren: 0.11,
+                staggerChildren: 0.09,
               },
             },
           }}
@@ -200,19 +200,14 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
               variants={{
                 hidden: {
                   opacity: 0,
-                  y: 34,
-                  rotateX: 14,
-                  filter: "blur(8px)",
+                  y: 24,
                 },
                 visible: {
                   opacity: 1,
                   y: 0,
-                  rotateX: 0,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.7, ease: EASE_OUT_EXPO },
+                  transition: { duration: 0.6, ease: EASE_OUT_EXPO },
                 },
               }}
-              style={{ transformPerspective: 900 }}
               className="font-heading text-3xl leading-[1.12] font-extrabold tracking-tight text-[#231118] sm:text-5xl lg:text-[64px] lg:leading-[1.06]"
             >
               Aulia Yasmin,{" "}
@@ -223,12 +218,11 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
 
             <motion.p
               variants={{
-                hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
+                hidden: { opacity: 0, y: 16 },
                 visible: {
                   opacity: 1,
                   y: 0,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.65, ease: EASE_OUT_EXPO },
+                  transition: { duration: 0.55, ease: EASE_OUT_EXPO },
                 },
               }}
               className="font-heading mt-3.5 max-w-2xl text-base leading-relaxed font-medium text-[#231118] sm:mt-5 sm:text-2xl sm:leading-snug"
@@ -251,12 +245,11 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
 
             <motion.div
               variants={{
-                hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+                hidden: { opacity: 0, y: 14 },
                 visible: {
                   opacity: 1,
                   y: 0,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.6, ease: EASE_OUT_EXPO },
+                  transition: { duration: 0.5, ease: EASE_OUT_EXPO },
                 },
               }}
               className="mt-5 grid grid-cols-1 gap-2.5 sm:mt-7 sm:flex sm:flex-wrap sm:items-center sm:gap-3.5"
@@ -296,13 +289,12 @@ export default function HeroSection({ onOpenCV }: HeroSectionProps) {
 
             <motion.div
               variants={{
-                hidden: { opacity: 0, y: 28, scale: 0.97, filter: "blur(8px)" },
+                hidden: { opacity: 0, y: 18, scale: 0.98 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   scale: 1,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.65, ease: EASE_OUT_EXPO },
+                  transition: { duration: 0.55, ease: EASE_OUT_EXPO },
                 },
               }}
               className="mt-6 border-t border-[#E8CED9] pt-5 sm:mt-9 sm:pt-6"

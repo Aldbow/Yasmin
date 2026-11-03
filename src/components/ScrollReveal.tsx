@@ -24,12 +24,12 @@ export function SectionHeaderReveal({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.25, margin: "-30px 0px -30px 0px" }}
+      viewport={{ once: true, amount: 0.15 }}
       variants={{
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: 0.1,
+            staggerChildren: 0.08,
           },
         },
       }}
@@ -39,12 +39,11 @@ export function SectionHeaderReveal({
       <div className="flex items-center gap-3">
         <motion.span
           variants={{
-            hidden: { opacity: 0, x: -20, filter: "blur(6px)" },
+            hidden: { opacity: 0, x: -16 },
             visible: {
               opacity: 1,
               x: 0,
-              filter: "blur(0px)",
-              transition: { duration: 0.55, ease: EASE_OUT_EXPO },
+              transition: { duration: 0.45, ease: EASE_OUT_EXPO },
             },
           }}
           className="font-mono-code text-[11px] font-semibold tracking-wider text-[#881337] sm:text-xs"
@@ -59,7 +58,7 @@ export function SectionHeaderReveal({
             visible: {
               scaleX: 1,
               opacity: 1,
-              transition: { duration: 0.85, ease: EASE_OUT_EXPO },
+              transition: { duration: 0.65, ease: EASE_OUT_EXPO },
             },
           }}
           style={{ transformOrigin: "left" }}
@@ -80,19 +79,14 @@ export function SectionHeaderReveal({
             variants={{
               hidden: {
                 opacity: 0,
-                y: 24,
-                rotateX: 12,
-                filter: "blur(8px)",
+                y: 18,
               },
               visible: {
                 opacity: 1,
                 y: 0,
-                rotateX: 0,
-                filter: "blur(0px)",
-                transition: { duration: 0.65, ease: EASE_OUT_EXPO },
+                transition: { duration: 0.55, ease: EASE_OUT_EXPO },
               },
             }}
-            style={{ transformPerspective: 900 }}
             className="font-heading text-2xl leading-snug font-bold tracking-tight text-[#231118] sm:text-4xl"
           >
             {title}
@@ -101,12 +95,11 @@ export function SectionHeaderReveal({
           {description && (
             <motion.p
               variants={{
-                hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
+                hidden: { opacity: 0, y: 12 },
                 visible: {
                   opacity: 1,
                   y: 0,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.6, ease: EASE_OUT_EXPO },
+                  transition: { duration: 0.5, ease: EASE_OUT_EXPO },
                 },
               }}
               className="mt-2 text-xs leading-relaxed text-[#52323F] sm:mt-2.5 sm:text-base"
@@ -119,13 +112,11 @@ export function SectionHeaderReveal({
         {rightSlot && (
           <motion.div
             variants={{
-              hidden: { opacity: 0, y: 20, scale: 0.96, filter: "blur(6px)" },
+              hidden: { opacity: 0, y: 14 },
               visible: {
                 opacity: 1,
                 y: 0,
-                scale: 1,
-                filter: "blur(0px)",
-                transition: { duration: 0.6, ease: EASE_OUT_EXPO },
+                transition: { duration: 0.5, ease: EASE_OUT_EXPO },
               },
             }}
           >
@@ -150,45 +141,33 @@ export function ScrollReveal({
   children,
   direction = "up",
   delay = 0,
-  duration = 0.7,
+  duration = 0.55,
   className = "",
-  amount = 0.18,
+  amount = 0.12,
 }: ScrollRevealProps) {
   const getInitial = () => {
     switch (direction) {
       case "left":
         return {
           opacity: 0,
-          x: -44,
-          y: 16,
-          scale: 0.96,
-          rotateY: -6,
-          filter: "blur(8px)",
+          x: -28,
         };
       case "right":
         return {
           opacity: 0,
-          x: 44,
-          y: 16,
-          scale: 0.96,
-          rotateY: 6,
-          filter: "blur(8px)",
+          x: 28,
         };
       case "scale":
         return {
           opacity: 0,
-          y: 28,
-          scale: 0.92,
-          filter: "blur(10px)",
+          y: 20,
+          scale: 0.96,
         };
       case "up":
       default:
         return {
           opacity: 0,
-          y: 42,
-          scale: 0.96,
-          rotateX: 8,
-          filter: "blur(8px)",
+          y: 28,
         };
     }
   };
@@ -201,17 +180,13 @@ export function ScrollReveal({
         x: 0,
         y: 0,
         scale: 1,
-        rotateX: 0,
-        rotateY: 0,
-        filter: "blur(0px)",
       }}
-      viewport={{ once: false, amount, margin: "-35px 0px -35px 0px" }}
+      viewport={{ once: true, amount }}
       transition={{
         duration,
         delay,
         ease: EASE_OUT_EXPO,
       }}
-      style={{ transformPerspective: 1000 }}
       className={className}
     >
       {children}
@@ -229,15 +204,15 @@ interface StaggerGridProps {
 export function StaggerGrid({
   children,
   className = "",
-  staggerDelay = 0.12,
-  amount = 0.15,
+  staggerDelay = 0.08,
+  amount = 0.1,
 }: StaggerGridProps) {
   const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
         staggerChildren: staggerDelay,
-        delayChildren: 0.04,
+        delayChildren: 0.02,
       },
     },
   };
@@ -246,7 +221,7 @@ export function StaggerGrid({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount, margin: "-35px 0px -35px 0px" }}
+      viewport={{ once: true, amount }}
       variants={containerVariants}
       className={className}
     >
@@ -264,19 +239,15 @@ export function StaggerCard({ children, className = "" }: StaggerCardProps) {
   const itemVariants: Variants = {
     hidden: {
       opacity: 0,
-      y: 40,
-      scale: 0.94,
-      rotateX: 10,
-      filter: "blur(8px)",
+      y: 24,
+      scale: 0.97,
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      rotateX: 0,
-      filter: "blur(0px)",
       transition: {
-        duration: 0.68,
+        duration: 0.5,
         ease: EASE_OUT_EXPO,
       },
     },
@@ -285,11 +256,9 @@ export function StaggerCard({ children, className = "" }: StaggerCardProps) {
   return (
     <motion.div
       variants={itemVariants}
-      style={{ transformPerspective: 1000 }}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
-
